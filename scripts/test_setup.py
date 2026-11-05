@@ -84,15 +84,27 @@ def check_youtube():
 
 
 def check_kaggle():
-    r = requests.get(
-        "https://www.kaggle.com/api/v1/kernels/list",
-        params={"user": env("KAGGLE_USERNAME"), "pageSize": 5},
-        auth=(env("KAGGLE_USERNAME"), env("KAGGLE_KEY")),
-        timeout=TIMEOUT,
-    )
+    user, key = env("KAGGLE_USERNAME"), env("KAGGLE_KEY")
+    url = "https://www.kaggle.com/api/v1/kernels/list"
+    params = {"user": user, "pageSize": 5}
+    # Old-style key from kaggle.json: username + 32-character key.
+    r = requests.get(url, params=params, auth=(user, key), timeout=TIMEOUT)
     if r.ok:
-        return True, "login works"
-    return False, short_error(r)
+        return True, "login works (kaggle.json key)"
+    # Newer Kaggle API token: sent as a Bearer token.
+    r2 = requests.get(url, params=params, headers={"Authorization": f"Bearer {key}"}, timeout=TIMEOUT)
+    if r2.ok:
+        return True, "login works (new-style API token)"
+    # Describe the shape of the value without revealing it.
+    if key.startswith("{"):
+        hint = "KAGGLE_KEY holds the whole kaggle.json; paste only the value after \"key\""
+    elif key.startswith('"') or key.endswith('"'):
+        hint = "KAGGLE_KEY has quote marks around it; remove them"
+    elif len(key) == 32 and all(ch in "0123456789abcdef" for ch in key):
+        hint = "key looks like a kaggle.json key; check KAGGLE_USERNAME matches your Kaggle username exactly, or create a new token"
+    else:
+        hint = f"key is {len(key)} characters and was rejected both ways; create a new token in Kaggle Settings"
+    return False, f"{short_error(r)}; {hint}"
 
 
 def check_sheet():
