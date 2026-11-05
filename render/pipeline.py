@@ -68,7 +68,7 @@ for attempt, seed in ((1, 42), (2, 1234)):
     if not tasks: break
     json.dump(tasks, open("/tmp/tasks.json", "w"))
     print(f"InfiniteTalk attempt {attempt}: {len(tasks)} clip(s), {sum(t['seconds'] for t in tasks):.1f}s of Madam Ji", flush=True)
-    pr = subprocess.Popen(f"cd /tmp/Wan2GP && MADAMJI_PHOTO={PHOTO} {PY} -u {HERE}/render_face.py /tmp/tasks.json", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    pr = subprocess.Popen(f"cd /tmp/Wan2GP && MPLBACKEND=Agg MADAMJI_PHOTO={PHOTO} {PY} -u {HERE}/render_face.py /tmp/tasks.json", shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     for line in pr.stdout:
         if line.startswith(("TASK_", "Traceback")) or "Error" in line or "inference 1/" in line: print(line.rstrip()[:200], flush=True)
     pr.wait()
