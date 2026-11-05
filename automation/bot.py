@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from common import *
 
 st = load_state(); s = settings(); live = is_live(s); changed = False
-times = [t.strip() for t in s.get("reel_times", DEFAULTS["reel_times"]).split(",") if t.strip()]
+times = sorted(v.strip() for k, v in s.items() if k.startswith("slot_reel_") and ":" in str(v)) or [t.strip() for t in s.get("reel_times", DEFAULTS["reel_times"]).split(",") if t.strip()]
 
 def next_slot():
     taken = {it.get("slot") for it in st["items"].values() if it["status"] in ("approved", "posted")}
@@ -86,6 +86,6 @@ for it in sorted(st["items"].values(), key=lambda x: x.get("slot", "")):
     ok = [f"{k}: {it[k]}" for k in ("instagram", "facebook") if it.get(k)]
     bad = [e for e in it.get("errors", [])[-2:]] if not (it.get("instagram") and it.get("facebook")) else []
     tg_msg(("🚀 Posted: " if it["status"] == "posted" else "⚠️ Partly posted: ") + it["topic"] + "\n" + "\n".join(ok + bad))
-    if it.get("instagram"): log_posted([now().strftime("%Y-%m-%d %H:%M"), it["id"], it["topic"], it.get("instagram", ""), it.get("facebook", "")])
+    if it.get("instagram"): log_posted([it["id"], now().strftime("%Y-%m-%d %H:%M"), "reel", it["topic"], "teaching", it.get("slot", ""), it["topic"], "", "", it.get("instagram", "")])
 if changed: save_state(st)
 print("done; live_mode", live)
