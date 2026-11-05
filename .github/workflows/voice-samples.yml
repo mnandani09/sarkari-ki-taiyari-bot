@@ -1,0 +1,44 @@
+name: Voice samples
+
+on:
+  workflow_dispatch:
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install edge-tts==7.3.1 requests==2.32.3
+      - name: Make 3 speeds and send them to Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          cat > samples.py <<'PY'
+          import asyncio, os, requests, edge_tts
+          TEXT = ("नमस्ते बच्चों! आज का सवाल: भारत का संविधान कब लागू हुआ? "
+                  "जवाब है, छब्बीस जनवरी, उन्नीस सौ पचास। इसीलिए हम इस दिन रिपब्लिक डे मनाते हैं। "
+                  "और याद रखो, संविधान बनकर तैयार हुआ था छब्बीस नवंबर, उन्नीस सौ उनचास को। "
+                  "ये दोनों डेट्स एग्ज़ाम में अक्सर कन्फ्यूज़ करती हैं। "
+                  "ऐसे ही रोज़ के टॉपिक्स के लिए फॉलो करो सरकारी की तैयारी!")
+          SPEEDS = [("A", "+0%", "normal"), ("B", "+8%", "thoda tez"), ("C", "+15%", "tez")]
+          async def make(rate, path):
+              await edge_tts.Communicate(TEXT, "hi-IN-SwaraNeural", rate=rate).save(path)
+          tok, chat = os.environ["TELEGRAM_TOKEN"], os.environ["TELEGRAM_CHAT_ID"]
+          api = f"https://api.telegram.org/bot{tok}"
+          requests.post(f"{api}/sendMessage", json={"chat_id": chat, "text":
+              "Madam Ji voice samples (hi-IN-SwaraNeural). Suno aur reply karo: A, B ya C."}, timeout=30)
+          for label, rate, name in SPEEDS:
+              path = f"sample_{label}.mp3"
+              asyncio.run(make(rate, path))
+              with open(path, "rb") as fh:
+                  r = requests.post(f"{api}/sendAudio", data={"chat_id": chat,
+                      "title": f"Sample {label} ({rate})", "performer": "Madam Ji",
+                      "caption": f"Sample {label}: speed {rate} ({name})"},
+                      files={"audio": (path, fh, "audio/mpeg")}, timeout=60)
+              print(label, rate, "sent" if r.ok else f"failed HTTP {r.status_code}")
+              r.raise_for_status()
+          PY
+          python samples.py
