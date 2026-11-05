@@ -3,6 +3,9 @@
 !package.json
 !prompts/*.json
 !templates/**/*.json
+!content/**/*.json
+!jobs/**/*.json
+!kaggle/kernel-metadata.json
 kaggle.json
 .env
 .env.*
@@ -19,6 +22,7 @@ venv/
 out/
 tmp/
 *.mp4
+!render/face_cache/*.mp4
 *.mp3
 *.wav
 *.png
