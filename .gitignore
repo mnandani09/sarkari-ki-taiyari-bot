@@ -1,0 +1,27 @@
+# Never commit keys or credential files. Keys live in GitHub Secrets only.
+*.json
+!package.json
+!prompts/*.json
+!templates/**/*.json
+kaggle.json
+.env
+.env.*
+*.pem
+*.key
+*_token*
+secrets/
+
+# Python / build output
+__pycache__/
+*.pyc
+.venv/
+venv/
+out/
+tmp/
+*.mp4
+*.mp3
+*.wav
+*.png
+!templates/**/*.png
+node_modules/
+claude_check.txt
