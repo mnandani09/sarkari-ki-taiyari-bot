@@ -1,0 +1,186 @@
+{
+ "id": "2026-11-07-r1",
+ "topic": "RBI kab bana",
+ "subject": "Economy GK",
+ "caption": "RBI kab bana? 🏦 1 April 1935!\n\n📜 Hilton Young Commission ki sifarish par\n🏢 HQ pehle Kolkata, 1937 mein Mumbai\n🇮🇳 1 January 1949: RBI nationalise hua\n👔 Pehle Governor: Sir Osborne Smith\n🧠 Trick: 35 bana, 37 Mumbai, 49 sarkari\n\nComment karo: RBI kis saal nationalise hua? A) 1935 B) 1949\nSave karo 📌 Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #SSCGD #RRB #RailwayExam #GK #GKinHindi #SarkariNaukri #CompetitiveExams #SarkariKiTaiyari #RBI #BankingAwareness",
+ "first_comment": "Answer: B) 1949 (1 January 1949).",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Exams ka pakka sawaal — RBI kab bana?",
+   "dev": "एग्ज़ाम्स का पक्का सवाल — आर बी आई कब बना?",
+   "banner": [
+    "🏦 Pakka sawaal!",
+    "RBI kab bana?"
+   ],
+   "sticker": "🏦"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second... socho.",
+   "dev": "तीन सेकंड... सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab hai 1 April 1935!",
+   "dev": "जवाब है, एक अप्रैल, उन्नीस सौ पैंतीस!",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "1935",
+     "label": "1 April"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "Hilton Young Commission ki sifarish par.",
+   "dev": "हिल्टन यंग कमीशन की सिफारिश पर।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "📜",
+     "lines": [
+      "Hilton Young",
+      "*Commission*"
+     ],
+     "small": "ki sifarish par"
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "Shuru mein headquarter tha Kolkata mein.",
+   "dev": "शुरू में हेडक्वार्टर था कोलकाता में।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🏢 HEADQUARTER",
+     "lines": [
+      "*Kolkata*"
+     ],
+     "small": "1935 mein"
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Story *abhi*",
+      "baaki hai..."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "1937 mein headquarter Mumbai shift hua.",
+   "dev": "उन्नीस सौ सैंतीस में हेडक्वार्टर मुंबई शिफ्ट हुआ।",
+   "cards": [
+    {
+     "type": "timeline",
+     "nodes": [
+      {
+       "year": "1935",
+       "label": "Kolkata"
+      },
+      {
+       "year": "1937",
+       "label": "*Mumbai*",
+       "on": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "Aur 1 January 1949 ko RBI nationalise hua.",
+   "dev": "और एक जनवरी, उन्नीस सौ उनचास को आर बी आई नेशनलाइज़ हुआ।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🇮🇳 1 JANUARY 1949",
+     "lines": [
+      "RBI *nationalise*"
+     ],
+     "small": "Ab sarkar ka bank"
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Pehle Governor the Sir Osborne Smith.",
+   "dev": "पहले गवर्नर थे सर ऑसबॉर्न स्मिथ।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "👔",
+     "lines": [
+      "Pehle Governor",
+      "*Sir Osborne Smith*"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "body",
+   "roman": "Trick — 35 mein bana, 37 mein Mumbai, 49 mein sarkari.",
+   "dev": "ट्रिक, पैंतीस में बना, सैंतीस में मुंबई, उनचास में सरकारी।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "35 → bana",
+      "37 → *Mumbai*",
+      "49 → _sarkari_"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p11",
+   "seg": "close",
+   "roman": "Ab batao — RBI kis saal nationalise hua?",
+   "dev": "अब बताओ — आर बी आई किस साल नेशनलाइज़ हुआ?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) 1935   B) 1949"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ]
+}

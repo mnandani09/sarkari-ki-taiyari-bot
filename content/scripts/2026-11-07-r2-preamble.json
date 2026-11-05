@@ -1,0 +1,160 @@
+{
+ "id": "2026-11-07-r2",
+ "topic": "Preamble ke 3 naye shabd",
+ "subject": "Polity",
+ "caption": "Preamble mein kaunse 3 shabd baad mein jode gaye? 📜\n\n✅ Socialist, Secular aur Integrity\n📅 1976: 42nd Amendment (Mini Constitution)\n☝️ Preamble ab tak sirf 1 baar amend hua\n🧠 Trick: S S I\n\nComment karo: Preamble kitni baar amend hua? A) 1 baar B) 3 baar\nSave karo 📌 Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #SSCGD #RRB #RailwayExam #GK #GKinHindi #SarkariNaukri #CompetitiveExams #SarkariKiTaiyari #Polity #IndianPolity #Preamble",
+ "first_comment": "Answer: A) Sirf 1 baar: 42nd Amendment, 1976.",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Polity ka pakka sawaal — Preamble mein kaunse 3 shabd baad mein jode gaye?",
+   "dev": "पॉलिटी का पक्का सवाल — प्रीएम्बल में कौन से तीन शब्द बाद में जोड़े गए?",
+   "banner": [
+    "📜 Polity ka pakka sawaal",
+    "Preamble ke 3 naye shabd?"
+   ],
+   "sticker": "📜"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second... socho.",
+   "dev": "तीन सेकंड... सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab: Socialist, Secular aur Integrity!",
+   "dev": "जवाब, सोशलिस्ट, सेक्युलर, और इंटीग्रिटी!",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "3",
+     "label": "Socialist · Secular · Integrity"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "Ye teeno 1976 mein 42nd Amendment se aaye.",
+   "dev": "ये तीनों उन्नीस सौ छिहत्तर में, बयालीसवें अमेंडमेंट से आए।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "📅 1976",
+     "lines": [
+      "*42nd* Amendment"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "Isliye 42nd Amendment ko Mini Constitution kehte hain.",
+   "dev": "इसलिए बयालीसवें अमेंडमेंट को मिनी कॉन्स्टिट्यूशन कहते हैं।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "📘",
+     "lines": [
+      "*Mini*",
+      "Constitution"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Story *abhi*",
+      "baaki hai..."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "Preamble mein ab tak sirf ek hi baar badlaav hua hai — wahi 1976 mein.",
+   "dev": "प्रीएम्बल में अब तक सिर्फ़ एक ही बार बदलाव हुआ है — वही उन्नीस सौ छिहत्तर में।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "☝️ SIRF EK BAAR",
+     "lines": [
+      "Preamble *amend*",
+      "hua: 1976"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "Integrity judi Unity of the Nation ke saath.",
+   "dev": "इंटीग्रिटी जुड़ी, यूनिटी ऑफ़ द नेशन के साथ।",
+   "cards": [
+    {
+     "type": "chips",
+     "chips": [
+      "Unity *and Integrity*",
+      "of the Nation"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Trick — S S I: Socialist, Secular, Integrity.",
+   "dev": "ट्रिक, एस एस आई, सोशलिस्ट, सेक्युलर, इंटीग्रिटी।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "*S S I*"
+     ],
+     "small": "Socialist · Secular · Integrity"
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "close",
+   "roman": "Ab batao — Preamble kitni baar amend hua?",
+   "dev": "अब बताओ — प्रीएम्बल कितनी बार अमेंड हुआ?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) 1 baar   B) 3 baar"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ]
+}
