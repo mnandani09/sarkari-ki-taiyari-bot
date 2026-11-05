@@ -10,7 +10,7 @@ import cards, qc, compose5
 
 JOBS, OUT = sys.argv[1], sys.argv[2]; os.makedirs(OUT, exist_ok=True)
 VOICE, RATE = "hi-IN-SwaraNeural", os.environ.get("VOICE_RATE", "+30%")
-MAX_S, GAP = 44.0, 0.2
+MAX_S, GAP = 43.0, 0.2
 PY = os.environ.get("WGP_PY", "/tmp/wgpenv/bin/python")
 PHOTO = os.environ.get("MADAMJI_PHOTO", f"{HERE}/madamji.jpg")
 RECIPE = "it-480-lightx2v4-v1"
