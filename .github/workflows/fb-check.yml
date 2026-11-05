@@ -1,0 +1,36 @@
+name: Facebook Page check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check what the token can do on the Page
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, urllib.parse
+          G = "https://graph.facebook.com/v25.0"
+          tok = os.environ["IG_TOKEN"]
+          def get(path, **params):
+              params["access_token"] = tok
+              try:
+                  with urllib.request.urlopen(f"{G}/{path}?{urllib.parse.urlencode(params)}", timeout=30) as r:
+                      return json.load(r)
+              except urllib.error.HTTPError as e:
+                  return {"error": json.load(e).get("error", {}).get("message", str(e))[:200]}
+          perms = get("me/permissions")
+          granted = sorted(p["permission"] for p in perms.get("data", []) if p.get("status") == "granted")
+          print("Granted permissions:", ", ".join(granted) or perms)
+          pages = get("me/accounts", fields="id,name,tasks")
+          for p in pages.get("data", []):
+              print(f"Page: {p['name']} id={p['id']} tasks={','.join(p.get('tasks', []))}")
+          if "error" in pages:
+              print("Pages lookup error:", pages["error"])
+          need = {"pages_show_list", "pages_manage_posts", "pages_read_engagement"}
+          missing = sorted(need - set(granted))
+          print("Ready to post to the Page." if not missing else "Missing for Page posting: " + ", ".join(missing))
+          PY
