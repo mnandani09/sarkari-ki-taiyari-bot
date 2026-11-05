@@ -1,0 +1,74 @@
+name: Nightly render
+
+# Every night at 9:31 PM IST: renders tomorrow's Reels on Kaggle (GPU), then sends them to Telegram for approval.
+on:
+  schedule:
+    - cron: "1 16 * * *"
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "How many Reels (blank = reels_per_day from the Sheet)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+      SHEET_ID: ${{ secrets.SHEET_ID }}
+      KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+      KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt kaggle
+      - name: Kaggle login
+        run: |
+          case "$KAGGLE_KEY" in KGAT_*) echo "KAGGLE_API_TOKEN=$KAGGLE_KEY" >> "$GITHUB_ENV";; esac
+      - name: Pick tonight's scripts
+        id: prep
+        run: python automation/prepare.py "${{ github.event.inputs.count }}"
+        env:
+          PYTHONPATH: automation
+      - name: Save the job list
+        if: steps.prep.outputs.count != '0'
+        run: |
+          git config user.name "skt-bot"; git config user.email "skt-bot@users.noreply.github.com"
+          git add -A jobs && git commit -m "Jobs for tonight's render" && git push || echo "nothing to commit"
+      - name: Render on Kaggle (GPU T4)
+        if: steps.prep.outputs.count != '0'
+        run: |
+          kaggle kernels push -p kaggle --accelerator NvidiaTeslaT4
+          sleep 60
+          python automation/wait_kaggle.py sarkarikitaiyari/skt-daily-render 18000
+          kaggle kernels output sarkarikitaiyari/skt-daily-render -p out
+      - name: Send to Telegram for approval
+        if: steps.prep.outputs.count != '0'
+        run: python automation/deliver.py out
+        env:
+          PYTHONPATH: automation
+      - name: Save state
+        if: always() && steps.prep.outputs.count != '0'
+        run: |
+          git add -A content render/face_cache jobs && git commit -m "Rendered $(date +%F)" && git push || echo "nothing to commit"
+      - name: Tell Telegram if it failed
+        if: failure()
+        run: python -c "import sys;sys.path.insert(0,'automation');from common import tg_msg;tg_msg('⚠️ Nightly render failed. Open GitHub → Actions → Nightly render to see the error (send Claude the error text, never keys).')"
+      - name: No scripts left
+        if: steps.prep.outputs.count == '0'
+        run: python -c "import sys;sys.path.insert(0,'automation');from common import tg_msg;tg_msg('📭 No new scripts left to render tonight. Ask Claude to add more.')"
