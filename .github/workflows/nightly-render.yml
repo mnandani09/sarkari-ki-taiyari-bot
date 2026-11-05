@@ -36,7 +36,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -q -r requirements.txt kaggle
+      - run: pip install -q -r requirements.txt "kaggle>=1.7" six
       - name: Kaggle login
         run: |
           case "$KAGGLE_KEY" in KGAT_*) echo "KAGGLE_API_TOKEN=$KAGGLE_KEY" >> "$GITHUB_ENV";; esac
