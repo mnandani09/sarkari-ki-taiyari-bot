@@ -93,7 +93,6 @@ def build(M, A, voice_wav, faces, out_path, total, tmp="/tmp/v5"):
                 sk = img(f"{A}/cards/{st}.png"); k = 0.5 + 0.3*ease(sa/0.2)
                 sk2 = sk.resize((int(sk.width*k), int(sk.height*k)))
                 fr.paste(sk2, (W - 150 - sk2.width//2, 1250 - sk2.height//2 - bob), sk2)
-            tag = img(f"{A}/cards/ai_tag.png"); fr.alpha_composite(tag, (W - tag.width - 20, 60))
             cap_y = 1590
         else:
             fr = cover(bg, W, H, 1.0 + 0.04*(t/total)).convert("RGBA")

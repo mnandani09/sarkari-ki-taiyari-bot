@@ -115,7 +115,7 @@ def render(job, out):
         def shot(h, w, ht, path):
             pg = b.new_page(viewport={"width": w, "height": ht}); pg.set_content(h); pg.wait_for_timeout(120)
             pg.screenshot(path=path, omit_background=True); pg.close()
-        shot(BG, 1080, 1920, f"{out}/bg_clean.png"); shot(AI_TAG, 300, 60, f"{out}/cards/ai_tag.png")
+        shot(BG, 1080, 1920, f"{out}/bg_clean.png")
         for ph in job["phrases"]:
             names = []
             for k, c in enumerate(ph.get("cards", [])):
