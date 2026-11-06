@@ -19,8 +19,8 @@
   {
    "id": "p02",
    "seg": "body",
-   "roman": "3 second... socho.",
-   "dev": "तीन सेकंड... सोचो।",
+   "roman": "3 second, socho!",
+   "dev": "तीन सेकंड, सोचो।",
    "cards": [
     {
      "type": "countdown"
