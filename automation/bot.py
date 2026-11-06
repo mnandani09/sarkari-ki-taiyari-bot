@@ -35,7 +35,15 @@ for u in ups:
 for u in ups:
     st["tg_offset"] = u["update_id"] + 1; changed = True
     cq = u.get("callback_query")
-    if cq and str(cq["message"]["chat"]["id"]) == env("TELEGRAM_CHAT_ID"):
+    me = env("TELEGRAM_CHAT_ID")
+    if cq:
+        ids = {str(cq.get("from", {}).get("id")), str(cq.get("message", {}).get("chat", {}).get("id"))}
+        if me not in ids:
+            print(f"  ignored: tap came from chat …{str(cq.get('message', {}).get('chat', {}).get('id'))[-4:]} / user …{str(cq.get('from', {}).get('id'))[-4:]}, expected …{me[-4:]}")
+            tg("answerCallbackQuery", callback_query_id=cq["id"], text="Not allowed from this account."); continue
+        if cq.get("data", "").startswith("test:"):
+            tg("answerCallbackQuery", callback_query_id=cq["id"], text="✅ Taps work!"); tg_msg("✅ Tap received. Approve and Skip buttons will work."); continue
+    if cq:
         parts = cq["data"].split(":"); act, rid = parts[0], parts[1] if len(parts) > 1 else ""; it = st["items"].get(rid)
         if not it or len(parts) < 3 or parts[2] != it.get("stamp"):
             tg("answerCallbackQuery", callback_query_id=cq["id"], text="This is an old preview. Use the newest one."); continue
@@ -51,6 +59,8 @@ for u in ups:
            reply_markup={"inline_keyboard": [[{"text": txt[:60], "callback_data": "noop:x"}]] if act != "noop" else []})
         if act != "noop": tg_msg(f"{txt}\n{it['topic']}")
     m = u.get("message")
+    if m and str(m["chat"]["id"]) == env("TELEGRAM_CHAT_ID") and m.get("text", "").strip().lower() in ("/test", "test"):
+        tg_msg("Tap the button to test:", reply_markup={"inline_keyboard": [[{"text": "👆 Tap me", "callback_data": "test:1"}]]})
     if m and str(m["chat"]["id"]) == env("TELEGRAM_CHAT_ID") and m.get("text", "").strip().lower() in ("/status", "status"):
         lines = [f"{it['status']:>9} · {it['topic'][:40]}" + (f" · {nice(it['slot'])}" if it.get("slot") and it["status"] == "approved" else "") for it in sorted(st["items"].values(), key=lambda x: x["made"])[-10:]]
         tg_msg("Queue (live_mode " + ("ON" if live else "OFF") + "):\n" + "\n".join(lines or ["empty"]))
