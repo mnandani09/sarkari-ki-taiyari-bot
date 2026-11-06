@@ -19,14 +19,26 @@ def next_slot():
     return (d + timedelta(hours=1)).isoformat()
 def nice(iso): return datetime.fromisoformat(iso).strftime("%a %d %b, %I:%M %p")
 
-# 1) Telegram taps
-ups = tg("getUpdates", offset=st.get("tg_offset", 0), timeout=0, allowed_updates=["callback_query", "message"]) or []
+# 1) Telegram taps (every tap is logged, so a missing tap can never be invisible again)
+wh = tg("getWebhookInfo") or {}
+print(f"telegram: webhook {'SET' if wh.get('url') else 'none'}, waiting updates {wh.get('pending_update_count', '?')}, last error: {wh.get('last_error_message', '-')}")
+if wh.get("url"):
+    tg("deleteWebhook", drop_pending_updates=False)
+    print("telegram: removed the webhook that was taking this bot's taps; GitHub reads them from now on")
+    tg_msg("🔧 Your Telegram bot was connected to another service that was catching your Approve/Skip taps. It is now released, so taps work again.")
+ups = tg("getUpdates", offset=st.get("tg_offset", 0), timeout=0, allowed_updates=["callback_query", "message"])
+if ups is None: print("telegram: getUpdates FAILED (see the line above; 'Conflict' means another program is reading this bot)"); ups = []
+print(f"telegram: {len(ups)} new update(s), offset {st.get('tg_offset', 0)}")
+for u in ups:
+    cq = u.get("callback_query"); m = u.get("message") or {}
+    print(f"  update {u['update_id']}: " + (f"button {cq.get('data')}" if cq else f"message {str(m.get('text', ''))[:30]!r}"))
 for u in ups:
     st["tg_offset"] = u["update_id"] + 1; changed = True
     cq = u.get("callback_query")
     if cq and str(cq["message"]["chat"]["id"]) == env("TELEGRAM_CHAT_ID"):
-        act, rid = cq["data"].split(":", 1); it = st["items"].get(rid)
-        if not it: tg("answerCallbackQuery", callback_query_id=cq["id"], text="Not found"); continue
+        parts = cq["data"].split(":"); act, rid = parts[0], parts[1] if len(parts) > 1 else ""; it = st["items"].get(rid)
+        if not it or len(parts) < 3 or parts[2] != it.get("stamp"):
+            tg("answerCallbackQuery", callback_query_id=cq["id"], text="This is an old preview. Use the newest one."); continue
         if act == "ok" and it["status"] in ("waiting", "skipped"):
             it["status"], it["slot"] = "approved", next_slot()
             txt = f"✅ Approved: posts {nice(it['slot'])}" + ("" if live else " (live_mode is OFF in the Sheet, so it will NOT post yet)")
@@ -88,4 +100,4 @@ for it in sorted(st["items"].values(), key=lambda x: x.get("slot", "")):
     tg_msg(("🚀 Posted: " if it["status"] == "posted" else "⚠️ Partly posted: ") + it["topic"] + "\n" + "\n".join(ok + bad))
     if it.get("instagram"): log_posted([it["id"], now().strftime("%Y-%m-%d %H:%M"), "reel", it["topic"], "teaching", it.get("slot", ""), it["topic"], "", "", it.get("instagram", "")])
 if changed: save_state(st)
-print("done; live_mode", live)
+print("done; live_mode", live, "| queue:", {k: v["status"] for k, v in st["items"].items()})
