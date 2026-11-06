@@ -1,4 +1,4 @@
-"""Runs every 10 minutes: reads your Telegram taps, schedules approved Reels into the next free slot,
+"""Runs every 10 minutes: reads your Telegram taps, schedules approved Reels into their day's slots (day-ahead),
 and publishes due Reels to Instagram + the Facebook Page (only when live_mode is true in the Sheet)."""
 import time
 from datetime import datetime, timedelta
@@ -18,6 +18,15 @@ def next_slot():
             if slot > d + timedelta(minutes=5) and slot.isoformat() not in taken: return slot.isoformat()
     return (d + timedelta(hours=1)).isoformat()
 def nice(iso): return datetime.fromisoformat(iso).strftime("%a %d %b, %I:%M %p")
+def planned_slot(it):
+    """Day-ahead: Reel 1, 2, 3 of a day go to slot_reel_1, 2, 3 on its post date (or the next free slot if that time has passed)."""
+    if not it.get("post_date"): return next_slot()
+    taken = {x.get("slot") for x in st["items"].values() if x["status"] in ("approved", "posted") and x is not it}
+    d = datetime.fromisoformat(it["post_date"]).date()
+    for t in times[int(it.get("order", 0)) % len(times):] + times[:int(it.get("order", 0)) % len(times)]:
+        h, m = map(int, t.split(":")); slot = datetime(d.year, d.month, d.day, h, m, tzinfo=IST)
+        if slot > now() + timedelta(minutes=5) and slot.isoformat() not in taken: return slot.isoformat()
+    return next_slot()
 
 # 1) Telegram taps (every tap is logged, so a missing tap can never be invisible again)
 wh = tg("getWebhookInfo") or {}
@@ -48,7 +57,7 @@ for u in ups:
         if not it or len(parts) < 3 or parts[2] != it.get("stamp"):
             tg("answerCallbackQuery", callback_query_id=cq["id"], text="This is an old preview. Use the newest one."); continue
         if act == "ok" and it["status"] in ("waiting", "skipped"):
-            it["status"], it["slot"] = "approved", next_slot()
+            it["status"], it["slot"] = "approved", planned_slot(it)
             txt = f"✅ Approved: posts {nice(it['slot'])}" + ("" if live else " (live_mode is OFF in the Sheet, so it will NOT post yet)")
         elif act == "skip" and it["status"] in ("waiting", "approved"):
             it["status"] = "skipped"; it.pop("slot", None); txt = "⏭ Skipped. It won't be posted."
@@ -65,7 +74,18 @@ for u in ups:
         lines = [f"{it['status']:>9} · {it['topic'][:40]}" + (f" · {nice(it['slot'])}" if it.get("slot") and it["status"] == "approved" else "") for it in sorted(st["items"].values(), key=lambda x: x["made"])[-10:]]
         tg_msg("Queue (live_mode " + ("ON" if live else "OFF") + "):\n" + "\n".join(lines or ["empty"]))
 
-# 2) publish due items
+# 2) midnight deadline + 9 PM reminder (day-ahead approvals)
+for it in st["items"].values():
+    if it["status"] == "waiting" and it.get("post_date") and now() >= datetime.fromisoformat(it["post_date"]).replace(tzinfo=IST):
+        it["status"] = "missed"; changed = True
+        tg_msg(f"⌛ Not approved by midnight, so this Reel will not post: {it['topic']}")
+tomorrow = (now() + timedelta(days=1)).date().isoformat()
+pending = [it for it in st["items"].values() if it["status"] == "waiting" and it.get("post_date") == tomorrow]
+if pending and now().hour >= 21 and st.get("reminded") != tomorrow:
+    st["reminded"] = tomorrow; changed = True
+    tg_msg(f"⏰ {len(pending)} Reel(s) for tomorrow still need Approve or Skip (deadline midnight): " + ", ".join(it["topic"] for it in pending))
+
+# 3) publish due items
 def ig_reel(it):
     ig, tok = env("IG_USER_ID"), env("IG_TOKEN")
     r = requests.post(f"{GRAPH}/{ig}/media", data={"media_type": "REELS", "video_url": it["video_url"], "caption": it["caption"],
