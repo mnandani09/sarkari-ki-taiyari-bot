@@ -1,9 +1,10 @@
 name: Nightly render
 
-# Every night at 9:31 PM IST: renders tomorrow's Reels on Kaggle (GPU), then sends them to Telegram for approval.
+# Day-ahead: every day at 2:01 PM IST it makes TOMORROW's Reels and sends them to Telegram for approval by midnight.
+
 on:
   schedule:
-    - cron: "1 16 * * *"
+    - cron: "31 8 * * *"
   workflow_dispatch:
     inputs:
       count:
@@ -42,7 +43,7 @@ jobs:
           case "$KAGGLE_KEY" in KGAT_*) echo "KAGGLE_API_TOKEN=$KAGGLE_KEY" >> "$GITHUB_ENV";; esac
       - name: Pick tonight's scripts
         id: prep
-        run: python automation/prepare.py "${{ github.event.inputs.count }}"
+        run: python automation/prepare.py "${{ github.event.inputs.count }}" "${{ github.event_name }}"
         env:
           PYTHONPATH: automation
       - name: Save the job list
@@ -72,5 +73,5 @@ jobs:
         if: failure()
         run: python -c "import sys;sys.path.insert(0,'automation');from common import tg_msg;tg_msg('⚠️ Nightly render failed. Open GitHub → Actions → Nightly render to see the error (send Claude the error text, never keys).')"
       - name: No scripts left
-        if: steps.prep.outputs.count == '0'
-        run: python -c "import sys;sys.path.insert(0,'automation');from common import tg_msg;tg_msg('📭 No new scripts left to render tonight. Ask Claude to add more.')"
+        if: steps.prep.outputs.reason == 'no scripts left'
+        run: python -c "import sys;sys.path.insert(0,'automation');from common import tg_msg;tg_msg('📭 No new scripts left to make tomorrow\'s Reels. Ask Claude to add more.')"
