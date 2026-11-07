@@ -1,10 +1,10 @@
 name: Nightly render
 
-# Day-ahead: every day at 2:01 PM IST it makes TOMORROW's Reels and sends them to Telegram for approval by midnight.
+# Day-ahead: every day at 1:31 PM IST it makes TOMORROW's Reels and sends them to Telegram for approval by midnight.
 
 on:
   schedule:
-    - cron: "31 8 * * *"
+    - cron: "1 8 * * *"
   workflow_dispatch:
     inputs:
       count:
