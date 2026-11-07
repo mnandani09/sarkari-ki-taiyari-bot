@@ -1,0 +1,37 @@
+# One topic per line: subject | topic | angle (what makes it a story). The writer takes the next unused line.
+Polity | Fundamental Rights kitne hain | 7 se 6 kaise hue: 44th Amendment (1978) ne Right to Property hataya, ab Article 300A
+History | Dandi March | 12 March 1930, Sabarmati se Dandi, 24 din, 78 saathi, namak kanoon
+Geography | Bharat ki sabse lambi nadi | Ganga ~2525 km; Godavari Dakshin Ganga kyun kehlati hai
+Science | Vitamin aur unki kami se rog | Vitamin C se scurvy, D se rickets, A se night blindness: trick
+Polity | President ka chunav | Electoral College, Article 54, Rajya Sabha nominated members vote nahi karte
+Economy | GST kab laagu hua | 1 July 2017, 101st Amendment, GST Council Article 279A
+History | Plassey ka yuddh | 1757, Robert Clive vs Siraj-ud-Daulah, Mir Jafar ka dhokha
+Static GK | Bharat ke rashtriya pratik | rashtriya pakshi mor, pashu baagh, ped bargad, nadi Ganga
+Polity | Lok Sabha ke Speaker | Article 93, pehle Speaker G.V. Mavalankar, Speaker vote kab deta hai (casting vote)
+Science | Insaan ke sharir ki sabse badi haddi | Femur sabse lambi, Stapes sabse chhoti (kaan mein)
+History | Bharat Chhodo Andolan | 8 August 1942, Bombay (Gowalia Tank), "Karo ya Maro"
+Railway GK | Vande Bharat Express | pehli Vande Bharat 15 Feb 2019, New Delhi se Varanasi, ICF Chennai mein bani
+Economy | NITI Aayog | 1 January 2015, Planning Commission ki jagah, chairman Pradhan Mantri
+Geography | Bharat ke padosi desh aur seema | sabse lambi border Bangladesh ke saath (~4096 km)
+Polity | Rajya Sabha | Article 80, max 250 members, 12 nominated, kabhi bhang nahi hoti
+Science | Prakash ki gati | lagbhag 3 lakh km per second, Sooraj ki roshni ~8 min 20 sec mein aati hai
+History | Pehla Swatantrata Sangram 1857 | 10 May 1857, Meerut se shuru, Mangal Pandey (Barrackpore, March 1857)
+Static GK | Nobel Prize paane wale pehle Bharatiya | Rabindranath Tagore, 1913, Literature, Gitanjali
+Geography | Bharat ka sabse bada rajya | kshetrafal mein Rajasthan, jansankhya mein Uttar Pradesh
+Economy | Bharatiya rupaye ka symbol | 15 July 2010 apnaya gaya, design D. Udaya Kumar
+Science | Rakt samooh | Karl Landsteiner ne khoja; O negative universal donor, AB positive universal recipient
+History | Jallianwala Bagh hatyakand | 13 April 1919, Amritsar, General Dyer, Hunter Commission
+Railway GK | Bharat ki sabse lambi railway platform | Hubballi (Karnataka), ~1507 m
+Polity | Supreme Court | 28 January 1950, Article 124, pehle Chief Justice H.J. Kania
+Static GK | Bharat Ratna | pehli baar 1954, C. Rajagopalachari, S. Radhakrishnan, C.V. Raman
+Geography | Karka rekha kitne rajyon se guzarti hai | 8 rajya: Gujarat se Mizoram tak, trick
+Science | Periodic table ka sabse halka tatva | Hydrogen, atomic number 1; sabse halki noble gas Helium
+History | Simon Commission | 1928 mein Bharat aaya, koi Bharatiya sadasya nahi, "Simon Go Back"
+Economy | SEBI | 1988 mein bana, 1992 mein statutory body, headquarters Mumbai
+Polity | Panchayati Raj | 73rd Amendment 1992, laagu 24 April 1993, Rajasthan ke Nagaur se shuruaat 1959
+Railway GK | Konkan Railway | Roha se Thokur, 1998 mein poori line chali, sabse lambi tunnel Karbude
+Geography | Bharat ki sabse badi jheel | meethe paani ki sabse badi Wular (J&K); sabse badi lagoon Chilika (Odisha)
+Science | Dhwani ki gati | hawa mein lagbhag 343 m/s, paani mein tez, vacuum mein shoonya
+History | Bengal ka Vibhajan | 16 October 1905, Lord Curzon, 1911 mein radd, Swadeshi andolan
+Static GK | Olympic mein Bharat ka pehla vyaktigat gold | Abhinav Bindra, 2008 Beijing, 10m air rifle
+Polity | Rajyapal | Article 153, President niyukt karte hain, umar kam se kam 35 saal
