@@ -35,12 +35,13 @@ if wh.get("url"):
     tg("deleteWebhook", drop_pending_updates=False)
     print("telegram: removed the webhook that was taking this bot's taps; GitHub reads them from now on")
     tg_msg("🔧 Your Telegram bot was connected to another service that was catching your Approve/Skip taps. It is now released, so taps work again.")
-ups = tg("getUpdates", offset=st.get("tg_offset", 0), timeout=0, allowed_updates=["callback_query", "message"])
+ups = tg("getUpdates", offset=st.get("tg_offset", 0), timeout=0, allowed_updates=[])   # [] = every update type (resets an old filter)
 if ups is None: print("telegram: getUpdates FAILED (see the line above; 'Conflict' means another program is reading this bot)"); ups = []
 print(f"telegram: {len(ups)} new update(s), offset {st.get('tg_offset', 0)}")
 for u in ups:
     cq = u.get("callback_query"); m = u.get("message") or {}
-    print(f"  update {u['update_id']}: " + (f"button {cq.get('data')}" if cq else f"message {str(m.get('text', ''))[:30]!r}"))
+    kind = [k for k in u if k != "update_id"]
+    print(f"  update {u['update_id']} {kind}: " + (f"button {cq.get('data')}" if cq else f"message {str(m.get('text', ''))[:30]!r}"))
 for u in ups:
     st["tg_offset"] = u["update_id"] + 1; changed = True
     cq = u.get("callback_query")
