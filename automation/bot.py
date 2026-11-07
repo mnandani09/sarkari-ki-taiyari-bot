@@ -118,17 +118,24 @@ for it in sorted(st["items"].values(), key=lambda x: x.get("slot", "")):
     if not live:
         if not it.get("dry_note"): tg_msg(f"🧪 Dry run: '{it['topic']}' would post now. Set live_mode to true in the Sheet's settings tab to post for real."); it["dry_note"] = True; changed = True
         continue
-    res = {}
+    before_ig = bool(it.get("instagram"))
     for name, fn in (("instagram", ig_reel), ("facebook", fb_video)):
         if it.get(name): continue
-        try: res[name] = fn(it); it[name] = res[name][1] or res[name][0]
-        except Exception as e: res[name] = None; it.setdefault("errors", []).append(f"{name}: {str(e)[:200]}"); print(name, "failed:", str(e)[:200])
+        try: r = fn(it); it[name] = r[1] or r[0]
+        except Exception as e: it.setdefault("errors", []).append(f"{name}: {str(e)[:200]}"); print(name, "failed:", str(e)[:200])
     changed = True
+    late = now() > datetime.fromisoformat(it["slot"]) + timedelta(hours=12)      # keep retrying for 12 h (e.g. while a Meta block is fixed)
     if it.get("instagram") and it.get("facebook"): it["status"] = "posted"
-    elif len(it.get("errors", [])) >= 6: it["status"] = "failed"
+    elif late: it["status"] = "failed"
     ok = [f"{k}: {it[k]}" for k in ("instagram", "facebook") if it.get(k)]
-    bad = [e for e in it.get("errors", [])[-2:]] if not (it.get("instagram") and it.get("facebook")) else []
-    tg_msg(("🚀 Posted: " if it["status"] == "posted" else "⚠️ Partly posted: ") + it["topic"] + "\n" + "\n".join(ok + bad))
-    if it.get("instagram"): log_posted([it["id"], now().strftime("%Y-%m-%d %H:%M"), "reel", it["topic"], "teaching", it.get("slot", ""), it["topic"], "", "", it.get("instagram", "")])
+    if it["status"] == "posted":
+        tg_msg("🚀 Posted: " + it["topic"] + "\n" + "\n".join(ok))
+    elif it["status"] == "failed":
+        tg_msg("❌ Gave up posting after 12 hours: " + it["topic"] + "\n" + "\n".join(ok + it.get("errors", [])[-2:]))
+    elif not it.get("alerted"):
+        it["alerted"] = True
+        tg_msg("⚠️ Couldn't post yet (retrying every 10 minutes for 12 hours): " + it["topic"] + "\n" + "\n".join(ok + it.get("errors", [])[-2:]))
+    if it.get("instagram") and not before_ig:
+        log_posted([it["id"], now().strftime("%Y-%m-%d %H:%M"), "reel", it["topic"], "teaching", it.get("slot", ""), it["topic"], "", "", it.get("instagram", "")])
 if changed: save_state(st)
 print("done; live_mode", live, "| queue:", {k: v["status"] for k, v in st["items"].items()})
