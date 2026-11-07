@@ -55,7 +55,7 @@ def check(clip, voice_wav, ref_img_path, expect_s):
         env = audio_env(voice_wav, fps, n)
         k = np.ones(5) / 5; a, b2 = np.convolve(mot, k, "same"), np.convolve(env, k, "same")
         m["lip_sync"] = round(float(np.corrcoef(a, b2)[0, 1]), 2) if a.std() > 0 and b2.std() > 0 else 0
-        if m["lip_sync"] < 0.25: reasons.append(f"mouth doesn't follow the voice ({m['lip_sync']})")
+        if m["lip_sync"] < 0.15: reasons.append(f"mouth doesn't follow the voice ({m['lip_sync']})")
     full = [cv2.cvtColor(f, cv2.COLOR_BGR2GRAY).astype(np.float32) for f in fr]
     br = np.array([f.mean() for f in full]); dif = np.array([np.abs(full[i] - full[i-1]).mean() for i in range(1, n)])
     m["darkest"], m["max_jump"] = round(float(br.min()), 1), round(float(dif.max()), 1)

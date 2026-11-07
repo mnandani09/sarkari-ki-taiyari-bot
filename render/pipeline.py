@@ -97,7 +97,7 @@ def cached(p):
         f = f"{c}/{key(p['dev'])}.mp4"
         if os.path.exists(f): return f
 for attempt, seed in ((1, 42), (2, 1234)):
-    tasks, owners = [], []
+    tasks, owners, same = [], [], {}
     for r in reels:
         for p in r["faces"]:
             if p["id"] in r["media"]: continue
@@ -105,7 +105,10 @@ for attempt, seed in ((1, 42), (2, 1234)):
             if f and attempt == 1:
                 ok, why, m = qc.check(f, wav, PHOTO, p["seg_s"])
                 if ok: r["media"][p["id"]] = ("clip", f); r["log"]["faces"][p["id"]] = {"source": "cache", **m}; continue
-            tasks.append({"audio": wav, "seconds": p["seg_s"], "seed": seed, "out": f"{r['T']}/{p['id']}_try{attempt}.mp4"}); owners.append((r, p))
+            k = key(p["dev"])
+            if k in same: owners[same[k]].append((r, p)); continue      # same line in several Reels (e.g. the ending): render once
+            same[k] = len(tasks)
+            tasks.append({"audio": wav, "seconds": p["seg_s"], "seed": seed, "out": f"{r['T']}/{p['id']}_try{attempt}.mp4"}); owners.append([(r, p)])
     if not tasks: break
     json.dump(tasks, open("/tmp/tasks.json", "w"))
     print(f"InfiniteTalk attempt {attempt}: {len(tasks)} clip(s), {sum(t['seconds'] for t in tasks):.1f}s of Madam Ji", flush=True)
@@ -113,14 +116,17 @@ for attempt, seed in ((1, 42), (2, 1234)):
     for line in pr.stdout:
         if line.startswith(("TASK_", "Traceback")) or "Error" in line or "inference 1/" in line: print(line.rstrip()[:200], flush=True)
     pr.wait()
-    for (r, p), tk in zip(owners, tasks):
-        if not os.path.exists(tk["out"]): r["log"]["faces"][p["id"]] = {"attempt": attempt, "fail": ["render failed"]}; continue
-        ok, why, m = qc.check(tk["out"], tk["audio"], PHOTO, p["seg_s"])
-        r["log"]["faces"][p["id"]] = {"attempt": attempt, "pass": ok, "fail": why, **m}
-        print(f"QC {r['job']['id']} {p['id']} try {attempt}: {'PASS' if ok else 'FAIL'} {why}", flush=True)
-        if ok:
-            r["media"][p["id"]] = ("clip", tk["out"])
-            if p["seg"] == "end": shutil.copy(tk["out"], f"{NEWCACHE}/{key(p['dev'])}.mp4")   # reusable ending
+    for group, tk in zip(owners, tasks):
+        r0, p0 = group[0]
+        if not os.path.exists(tk["out"]):
+            for r, p in group: r["log"]["faces"][p["id"]] = {"attempt": attempt, "fail": ["render failed"]}
+            continue
+        ok, why, m = qc.check(tk["out"], tk["audio"], PHOTO, p0["seg_s"])
+        print(f"QC {r0['job']['id']} {p0['id']} try {attempt}: {'PASS' if ok else 'FAIL'} {why}" + (f" (shared by {len(group)} Reels)" if len(group) > 1 else ""), flush=True)
+        for r, p in group:
+            r["log"]["faces"][p["id"]] = {"attempt": attempt, "pass": ok, "fail": why, **m}
+            if ok: r["media"][p["id"]] = ("clip", tk["out"])
+        if ok and p0["seg"] == "end": shutil.copy(tk["out"], f"{NEWCACHE}/{key(p0['dev'])}.mp4")   # reusable ending
 for r in reels:
     for p in r["faces"]:
         if p["id"] not in r["media"]:
