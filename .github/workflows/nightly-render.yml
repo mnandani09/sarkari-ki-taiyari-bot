@@ -41,6 +41,18 @@ jobs:
       - name: Kaggle login
         run: |
           case "$KAGGLE_KEY" in KGAT_*) echo "KAGGLE_API_TOKEN=$KAGGLE_KEY" >> "$GITHUB_ENV";; esac
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Write new scripts if fewer than tomorrow needs (Claude writes, Gemini fact-checks)
+        continue-on-error: true
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PYTHONPATH: automation
+        run: |
+          npm install -g @anthropic-ai/claude-code > /dev/null 2>&1
+          python automation/write_scripts.py
       - name: Pick tonight's scripts
         id: prep
         run: python automation/prepare.py "${{ github.event.inputs.count }}" "${{ github.event_name }}"
@@ -50,7 +62,7 @@ jobs:
         if: steps.prep.outputs.count != '0'
         run: |
           git config user.name "skt-bot"; git config user.email "skt-bot@users.noreply.github.com"
-          git add -A jobs && git commit -m "Jobs for tonight's render" && (git pull --rebase -q && git push) || echo "nothing to commit"
+          git add -A jobs content && git commit -m "Jobs for tonight's render" && (git pull --rebase -q && git push) || echo "nothing to commit"
       - name: Render on Kaggle (GPU T4)
         if: steps.prep.outputs.count != '0'
         run: |

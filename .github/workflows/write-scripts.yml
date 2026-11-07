@@ -1,0 +1,47 @@
+name: Write scripts
+
+# By hand: writes and fact-checks new scripts now (the daily render also does this automatically when it needs to).
+on:
+  workflow_dispatch:
+    inputs:
+      keep:
+        description: "Keep this many unrendered scripts ready (blank = reels_per_day + 1)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly-render
+  cancel-in-progress: false
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: pip install -q -r requirements.txt
+      - name: Write and fact-check scripts
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
+          PYTHONPATH: automation
+        run: |
+          npm install -g @anthropic-ai/claude-code > /dev/null 2>&1
+          python automation/write_scripts.py "${{ github.event.inputs.keep }}"
+      - name: Save the new scripts
+        run: |
+          git config user.name "skt-bot"; git config user.email "skt-bot@users.noreply.github.com"
+          git add -A content && git commit -m "New scripts $(date +%F)" && (git pull --rebase -q && git push) || echo "nothing new"
