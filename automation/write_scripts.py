@@ -48,9 +48,16 @@ def extract_json(text):
 
 def ask_claude(prompt):
     if not os.environ.get("CLAUDE_CODE_OAUTH_TOKEN"): raise RuntimeError("no Claude token")
-    p = subprocess.run(["claude", "-p", prompt, "--output-format", "text"], capture_output=True, text=True, timeout=420)
+    p = subprocess.run(["claude", "-p", prompt, "--output-format", "json"], capture_output=True, text=True, timeout=420)
     if p.returncode: raise RuntimeError(f"claude exit {p.returncode}: {p.stderr[-200:]}")
-    return p.stdout
+    try: j = json.loads(p.stdout)
+    except ValueError: return p.stdout
+    u = j.get("usage") or {}       # log every call's tokens; claude_report.py sums them for Telegram
+    with open(os.environ.get("CLAUDE_USAGE_LOG", "/tmp/claude_usage.jsonl"), "a") as f:
+        f.write(json.dumps({"in": u.get("input_tokens", 0), "out": u.get("output_tokens", 0), "cache_w": u.get("cache_creation_input_tokens", 0),
+                            "cache_r": u.get("cache_read_input_tokens", 0), "usd": j.get("total_cost_usd", 0)}) + "\n")
+    if j.get("is_error"): raise RuntimeError(f"claude error: {str(j.get('result'))[:200]}")
+    return j.get("result", "")
 
 _gem_model = None
 def gemini(prompt, as_json=True):
