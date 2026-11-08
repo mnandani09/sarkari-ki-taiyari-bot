@@ -92,6 +92,14 @@ jobs:
           git config user.name "skt-bot"; git config user.email "skt-bot@users.noreply.github.com"
           mkdir -p render/face_cache && touch render/face_cache/.keep
           git add -A content jobs render/face_cache && git commit -m "Rendered $(date +%F)" && (git pull --rebase -q && git push) || echo "nothing to commit"
+      - name: Claude usage and storage report
+        if: always()
+        continue-on-error: true
+        env:
+          PYTHONPATH: automation
+        run: |
+          python automation/claude_report.py
+          python automation/cleanup.py
       - name: Tell Telegram if it failed
         if: failure()
         run: python -c "import sys;sys.path.insert(0,'automation');from common import tg_msg;tg_msg('⚠️ Nightly render failed. Open GitHub → Actions → Nightly render to see the error (send Claude the error text, never keys).')"

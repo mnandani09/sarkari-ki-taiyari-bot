@@ -1,0 +1,29 @@
+name: Storage report and cleanup
+
+# Runs by itself at the end of every Nightly render. Run it by hand to see Supabase usage now.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "report = only report; blank = follow cleanup_days in the Sheet"
+        required: false
+        default: "report"
+
+jobs:
+  storage:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+      SHEET_ID: ${{ secrets.SHEET_ID }}
+      PYTHONPATH: automation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - run: python automation/cleanup.py "${{ github.event.inputs.mode }}"
