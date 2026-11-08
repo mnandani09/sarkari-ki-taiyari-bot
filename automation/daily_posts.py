@@ -147,7 +147,7 @@ def main():
     for part, u2, key in (("q", sq, "slot_story_q"), ("a", sa, "slot_story_a")):
         st["items"][f"{grp}-{part}"] = {**base, "id": f"{grp}-{part}", "group": grp, "kind": "story", "topic": f"Story ({'quiz' if part == 'q' else 'answer'}): " + j["story"]["topic"],
                                         "image_url": u2, "caption": "", "fixed_slot": slot(key)}
-    save_state(st)
+    save_state(st, only=[k for k, v in st["items"].items() if v.get("post_date") == target and v.get("stamp") == stamp and v.get("kind") != "reel"])
     tg_msg(f"📋 Carousel, quiz post and 2 Stories for {when} are above (fact-checked). Approve or Skip each by midnight tonight.")
     log.append({"date": target, "topics": [c["topic"], p["topic"], j["story"]["topic"]], "questions": [q["q"] for q in all_qs(j)]})
     json.dump(log[-40:], open(LOG, "w", encoding="utf-8"), ensure_ascii=False, indent=1)

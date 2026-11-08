@@ -76,6 +76,11 @@ for u in ups:
     m = u.get("message")
     if m and str(m["chat"]["id"]) == env("TELEGRAM_CHAT_ID") and m.get("text", "").strip().lower() in ("/test", "test"):
         tg_msg("Tap the button to test:", reply_markup={"inline_keyboard": [[{"text": "👆 Tap me", "callback_data": "test:1"}]]})
+    if m and str(m["chat"]["id"]) == env("TELEGRAM_CHAT_ID") and m.get("text", "").strip().lower() in ("/pending", "pending"):
+        waiting = {x.get("group", x["id"]): x for x in sorted(st["items"].values(), key=lambda x: x["id"]) if x["status"] == "waiting"}
+        for gid, x in waiting.items():
+            tg_msg(f"{x['topic']} (for {x.get('post_date', '?')})", reply_markup={"inline_keyboard": [[{"text": "✅ Approve", "callback_data": f"ok:{gid}:{x['stamp']}"}, {"text": "⏭ Skip", "callback_data": f"skip:{gid}:{x['stamp']}"}]]})
+        if not waiting: tg_msg("Nothing is waiting for approval.")
     if m and str(m["chat"]["id"]) == env("TELEGRAM_CHAT_ID") and m.get("text", "").strip().lower() in ("/status", "status"):
         lines = [f"{it['status']:>9} · {it['topic'][:40]}" + (f" · {nice(it['slot'])}" if it.get("slot") and it["status"] == "approved" else "") for it in sorted(st["items"].values(), key=lambda x: x["made"])[-10:]]
         tg_msg("Queue (live_mode " + ("ON" if live else "OFF") + "):\n" + "\n".join(lines or ["empty"]))

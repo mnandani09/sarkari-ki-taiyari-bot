@@ -34,7 +34,15 @@ def load_state():
     r = requests.get(f"{env('SUPABASE_URL').rstrip('/')}/storage/v1/object/reels/{STATE}", headers=sb_headers(), timeout=60)
     if r.status_code in (400, 404) or not r.ok: return {"items": {}, "tg_offset": 0}
     return r.json()
-def save_state(st):
+def save_state(st, only=None):
+    """Merge with the newest copy first, so two jobs saving at once never undo each other's changes.
+    only=[ids]: this job only ADDED those items (deliver, daily posts) -> everything else is kept as it is now."""
+    cur = load_state()
+    if only is not None:
+        cur["items"].update({k: st["items"][k] for k in only}); st = cur
+    else:
+        for k, v in cur["items"].items(): st["items"].setdefault(k, v)
+        st["tg_offset"] = max(st.get("tg_offset", 0), cur.get("tg_offset", 0))
     sb_upload(STATE, json.dumps(st, ensure_ascii=False, indent=1).encode(), "application/json")
 
 # ---------- Telegram ----------

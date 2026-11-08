@@ -6,7 +6,7 @@ from common import *
 OUT = sys.argv[1]
 st = load_state(); s = settings(); rendered = json.load(open("content/rendered.json")) if os.path.exists("content/rendered.json") else []
 jobs = {json.load(open(f, encoding="utf-8"))["id"]: json.load(open(f, encoding="utf-8")) for f in glob.glob("jobs/pending/*.json")}
-sent = 0
+sent = 0; new_ids = []
 for mp4 in sorted(glob.glob(f"{OUT}/**/*.mp4", recursive=True)):
     rid = os.path.basename(mp4)[:-4]
     if rid not in jobs: continue
@@ -28,10 +28,10 @@ for mp4 in sorted(glob.glob(f"{OUT}/**/*.mp4", recursive=True)):
     st["items"][rid] = {"id": rid, "kind": "reel", "topic": job["topic"], "video_url": url, "cover_url": cover_url,
                         "caption": job["caption"], "first_comment": job.get("first_comment", ""), "status": "waiting",
                         "tg_msg": (msg or {}).get("message_id"), "stamp": stamp, "made": now().isoformat(), "qc": qc, "post_date": pdate, "order": order}
-    rendered.append(rid); sent += 1
+    rendered.append(rid); sent += 1; new_ids.append(rid)
 for f in glob.glob(f"{OUT}/**/face_cache/*.mp4", recursive=True):
     os.makedirs("render/face_cache", exist_ok=True); shutil.copy(f, "render/face_cache/")
-save_state(st)
+save_state(st, only=new_ids)
 json.dump(sorted(set(rendered)), open("content/rendered.json", "w"), indent=1)
 pdates = sorted({j.get("post_date") for j in jobs.values() if j.get("post_date")})
 if sent and pdates:
