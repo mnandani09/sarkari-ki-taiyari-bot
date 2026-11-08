@@ -59,6 +59,15 @@ def validate(j):
         if not x.get("topic"): e.append(f"{k} needs a topic")
     return e
 
+def shuffle(j, seed):
+    """Models put the right answer at A too often; spread it over A-D and rebuild the answer comment to match."""
+    import random
+    rnd = random.Random(seed)
+    for q in all_qs(j):
+        right = q["options"][q["answer"]]; rnd.shuffle(q["options"]); q["answer"] = q["options"].index(right)
+    p = j["post"]
+    p["answer_comment"] = f"✅ Sahi jawaab: {'ABCD'[p['answer']]}) {p['options'][p['answer']]}. {p['why']} Kitne logon ne sahi bataya? 🙌"
+
 def all_qs(j): return j["carousel"]["questions"] + [j["post"], j["story"]]
 def fact_check(j):
     L = "ABCD"; lines = []
@@ -73,7 +82,7 @@ Use standard sources (NCERT, Lucent GK, official government facts).
 Reply as JSON: {"ok": true or false, "issues": ["Qn: what is wrong and the correct fact"]}. "ok" must be false if anything is wrong or doubtful."""))
     return bool(r.get("ok")), r.get("issues", [])
 
-def write(subjects, avoid):
+def write(subjects, avoid, seed=0):
     base = prompt(subjects, avoid); last = ([], [])
     for rnd in range(2):
         try: j, by = extract_json(ask_claude(base)), "claude"
@@ -81,6 +90,7 @@ def write(subjects, avoid):
             print("Claude unavailable, using Gemini:", str(ex)[:150]); j, by = extract_json(gemini(base)), "gemini"
         errs = validate(j)
         if not errs:
+            shuffle(j, seed)
             try: post_cards.render_all(j, "out_posts")
             except ValueError as ex: errs = [str(ex) + " (make that text shorter)"]
         ok, issues = (False, []) if errs else fact_check(j)
@@ -102,10 +112,12 @@ def main():
     if not force and target in dates: print(f"posts for {target} already made"); return
     log = json.load(open(LOG)) if os.path.exists(LOG) else []
     avoid = [q for e in log for q in e.get("questions", [])]
+    import glob    # Reel topics too, so a quiz doesn't repeat a Reel from the same week
+    avoid += ["(Reel topic) " + json.load(open(f, encoding="utf-8")).get("topic", "") for f in sorted(glob.glob("content/scripts/*.json"))[-15:]]
     k = date.fromisoformat(target).toordinal()
     subjects = [SUBJECTS[k % len(SUBJECTS)], SUBJECTS[(k + 3) % len(SUBJECTS)], SUBJECTS[(k + 6) % len(SUBJECTS)]]
     try:
-        j, by = write(subjects, avoid)
+        j, by = write(subjects, avoid, date.fromisoformat(target).toordinal())
         files = post_cards.render_all(j, "out_posts")
     except Exception as ex:
         tg_msg(f"⚠️ Couldn't make the carousel / post / Stories for {target}: {str(ex)[:300]}\nThe Reels are not affected."); raise
