@@ -1,0 +1,45 @@
+name: Carousel, post and Stories
+
+# Normally runs inside "Nightly render". Run it by hand to (re)make one day's carousel, quiz post and 2 Stories.
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Post date YYYY-MM-DD (blank = tomorrow)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  posts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+      SHEET_ID: ${{ secrets.SHEET_ID }}
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      PYTHONPATH: automation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: pip install -q -r requirements.txt
+      - run: npm install -g @anthropic-ai/claude-code > /dev/null 2>&1
+      - run: bash automation/setup_images.sh
+      - run: python automation/daily_posts.py "${{ github.event.inputs.date }}"
+      - name: Save
+        if: always()
+        run: |
+          git config user.name "skt-bot"; git config user.email "skt-bot@users.noreply.github.com"
+          git add -A content && git commit -m "Daily posts" && (git pull --rebase -q && git push) || echo "nothing to commit"
