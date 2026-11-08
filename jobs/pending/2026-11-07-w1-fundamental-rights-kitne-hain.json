@@ -1,0 +1,170 @@
+{
+ "id": "2026-11-07-w1",
+ "topic": "Fundamental Rights: 7 se 6 kaise hue",
+ "subject": "Polity",
+ "caption": "Fundamental Rights kitne hain? 🤔 Pehle 7 thi, ab sirf 6 hain!\n\n📜 1950: Constitution mein shuru mein 7 Fundamental Rights, including Right to Property\n⚖️ 1978: 44th Amendment Act ne Right to Property ko Fundamental Rights list se hataya\n🏠 Ab: Right to Property sirf legal right hai, Article 300A (Part XII) ke under\n🧠 Trick: 44th mein Property gaya, 7 bane 6\n\nComment karo: Right to Property ab kaunsa Article hai? A) Article 300A ya B) Article 32\nSave karo revision ke liye 📌 aur Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #RRB #RailwayExam #Polity #IndianPolity #FundamentalRights #GK #GKinHindi #SarkariNaukri #CompetitiveExams #44thAmendment",
+ "first_comment": "Answer: A) Article 300A. 44th Amendment (1978) ne Right to Property ko Fundamental Rights se hata diya; ab ye Article 300A (Part XII) ke under legal right hai.",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Ye sawaal exams mein ghoom-ghoom kar aata hai — Fundamental Rights kitne hain?",
+   "dev": "ये सवाल एग्ज़ाम्स में घूम घूम कर आता है — फंडामेंटल राइट्स कितने हैं?",
+   "banner": [
+    "⚠️ Exam mein baar-baar!",
+    "Fundamental Rights kitne hain?"
+   ],
+   "sticker": "⚠️"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second, socho!",
+   "dev": "तीन सेकंड, सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab hai 6!",
+   "dev": "जवाब है, छह!",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "6",
+     "label": "Fundamental Rights (aaj)"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "1950 ke Constitution mein shuru mein 7 Fundamental Rights thi.",
+   "dev": "उन्नीस सौ पचास के कॉन्स्टिट्यूशन में शुरू में सात फंडामेंटल राइट्स थीं।",
+   "cards": [
+    {
+     "type": "grid",
+     "n": 7,
+     "title": "Shuru mein",
+     "caption": "*7* Fundamental Rights"
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "7th right tha — Right to Property.",
+   "dev": "सातवां राइट था, राइट टू प्रॉपर्टी।",
+   "cards": [
+    {
+     "type": "chips",
+     "chips": [
+      "🏠 Right to Property"
+     ],
+     "small": "7th Fundamental Right (1950)"
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Story abhi",
+      "*baaki hai*"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "1978 mein 44th Amendment ne Right to Property hataya.",
+   "dev": "उन्नीस सौ अठहत्तर में, चौवालीसवें अमेंडमेंट ने, राइट टू प्रॉपर्टी हटाया।",
+   "cards": [
+    {
+     "type": "timeline",
+     "nodes": [
+      {
+       "year": "1950",
+       "label": "7 Fundamental Rights"
+      },
+      {
+       "year": "1978",
+       "label": "44th Amendment *Property hataya*",
+       "on": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "Ab ye sirf legal right hai, Article 300A mein.",
+   "dev": "अब ये सिर्फ लीगल राइट है, आर्टिकल तीन सौ ए में।",
+   "cards": [
+    {
+     "type": "chips",
+     "chips": [
+      "📜 Article 300A",
+      "📘 Part XII"
+     ],
+     "small": "Right to Property (ab)"
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Trick yaad rakhna — 44th mein Property gaya, 7 bane 6.",
+   "dev": "ट्रिक याद रखना, चौवालीसवें में प्रॉपर्टी गया, सात बने छह।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "44th → *Property gaya*",
+      "7 _-1_ = *6*"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "close",
+   "roman": "Ab batao — Right to Property ab kaunsa Article hai?",
+   "dev": "अब बताओ, राइट टू प्रॉपर्टी अब कौनसा आर्टिकल है?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) Article 300A   B) Article 32"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ],
+ "bank_topic": "Fundamental Rights kitne hain",
+ "written_by": "claude",
+ "fact_check": "passed (Gemini)",
+ "post_date": "2026-11-09",
+ "order": 1
+}

@@ -1,0 +1,170 @@
+{
+ "id": "2026-11-07-w2",
+ "topic": "Dandi March: 12 March 1930, Sabarmati se Dandi",
+ "subject": "History",
+ "caption": "Dandi March mein Gandhiji ke saath kitne saathi the? 🤔 Jawaab hai 78, lekin asli kahani sirf itni nahi hai!\n\n🚶 12 March 1930: Sabarmati Ashram se Dandi Yatra shuru\n👥 78 satyagrahi saathi Gandhiji ke saath paidal nikle\n📏 24 din mein lagbhag 385 km ka safar\n⚖️ 6 April 1930: Dandi pahunchkar Namak Kanoon toda gaya\n\nComment karo: Dandi March kab shuru hui? A) 12 March 1930 ya B) 6 April 1930\nSave karo revision ke liye 📌 aur Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #RRB #RailwayExam #History #IndianHistory #DandiMarch #FreedomStruggle #GK #GKinHindi #SarkariNaukri #CompetitiveExams",
+ "first_comment": "Answer: A) 12 March 1930. Dandi March Sabarmati Ashram se shuru hui thi; 6 April 1930 ko Dandi mein Namak Kanoon toda gaya.",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Exams mein baar-baar aata hai — Dandi March mein kitne saathi the?",
+   "dev": "एग्ज़ाम्स में बार-बार आता है — डांडी मार्च में कितने साथी थे?",
+   "banner": [
+    "⚠️ Baar-baar aata hai!",
+    "Dandi March ke saathi?"
+   ],
+   "sticker": "⚠️"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second, socho!",
+   "dev": "तीन सेकंड, सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab hai 78!",
+   "dev": "जवाब है, अठहत्तर!",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "78",
+     "label": "Dandi March ke saathi"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "12 March 1930 ko Sabarmati Ashram se yatra shuru hui.",
+   "dev": "बारह मार्च, उन्नीस सौ तीस को, साबरमती आश्रम से यात्रा शुरू हुई।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "📜 12 March 1930",
+     "lines": [
+      "Sabarmati Ashram se",
+      "*Dandi Yatra* shuru"
+     ],
+     "emoji": "🚶"
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "Gandhiji ke saath 78 saathi paidal nikle the.",
+   "dev": "गांधीजी के साथ अठहत्तर साथी पैदल निकले थे।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🚶‍♂️",
+     "lines": [
+      "*78* saathi",
+      "Gandhiji ke saath"
+     ],
+     "small": "Satyagrahi the"
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "24 din tak, lagbhag 385 kilometre chale.",
+   "dev": "चौबीस दिन तक, लगभग तीन सौ पचासी किलोमीटर चले।",
+   "cards": [
+    {
+     "type": "chips",
+     "chips": [
+      "🚶 24 din",
+      "📏 385 km"
+     ],
+     "small": "Sabarmati se Dandi"
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Story *abhi*",
+      "baaki hai"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "6 April 1930 ko Dandi pahunchkar, Namak Kanoon toda gaya.",
+   "dev": "छह अप्रैल, उन्नीस सौ तीस को, डांडी पहुंचकर, नमक कानून तोड़ा गया।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "⚖️ NAMAK KANOON",
+     "lines": [
+      "*Toda gaya*",
+      "6 April 1930"
+     ],
+     "small": "Dandi mein"
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Trick yaad rakhna — 12 ko shuru, 6 ko toda kanoon.",
+   "dev": "ट्रिक याद रखना — बारह को शुरू, छह को तोड़ा कानून।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "12 March → *shuru*",
+      "6 April → _toda_"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "close",
+   "roman": "Ab batao — Dandi March kab shuru hui thi?",
+   "dev": "अब बताओ — डांडी मार्च कब शुरू हुई थी?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) 12 March 1930   B) 6 April 1930"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ],
+ "bank_topic": "Dandi March",
+ "written_by": "claude",
+ "fact_check": "passed (Gemini)",
+ "post_date": "2026-11-09",
+ "order": 2
+}
