@@ -1,0 +1,39 @@
+name: Resend last render
+
+# If "Send to Telegram" failed after a good Kaggle render: downloads Kaggle's last output and sends it again (no re-render).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  resend:
+    runs-on: ubuntu-latest
+    env:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+      SHEET_ID: ${{ secrets.SHEET_ID }}
+      KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+      KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      PYTHONPATH: automation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt "kaggle>=1.7" six
+      - name: Kaggle login
+        run: |
+          case "$KAGGLE_KEY" in KGAT_*) echo "KAGGLE_API_TOKEN=$KAGGLE_KEY" >> "$GITHUB_ENV";; esac
+      - run: kaggle kernels output sarkarikitaiyari/skt-daily-render -p out
+      - run: python automation/deliver.py out
+      - name: Save state
+        if: always()
+        run: |
+          git config user.name "skt-bot"; git config user.email "skt-bot@users.noreply.github.com"
+          mkdir -p render/face_cache && touch render/face_cache/.keep
+          git add -A content jobs render/face_cache && git commit -m "Resent $(date +%F)" && (git pull --rebase -q && git push) || echo "nothing to commit"
