@@ -17,7 +17,8 @@ for mp4 in sorted(glob.glob(f"{OUT}/**/*.mp4", recursive=True)):
     stamp = now().strftime("%H%M%S")              # new name every render, so no app can show an old cached copy
     url = sb_upload(f"{day}/{rid}-{stamp}.mp4", open(mp4, "rb").read(), "video/mp4")
     cover = mp4[:-4] + "_cover.jpg"
-    cover_url = sb_upload(f"{day}/{rid}-{stamp}_cover.jpg", open(cover, "rb").read(), "image/jpeg") if os.path.exists(cover) else None
+    try: cover_url = sb_upload(f"{day}/{rid}-{stamp}_cover.jpg", open(cover, "rb").read(), "image/jpeg") if os.path.exists(cover) else None
+    except Exception as e: print("cover skipped:", str(e)[:150]); cover_url = None
     note = f"⚠️ still photo used for: {', '.join(qc.get('fallbacks', []))}" if qc.get("fallbacks") else "✅ quality checks passed"
     pdate = job.get("post_date"); order = int(job.get("order", 0))
     when = datetime.fromisoformat(pdate).strftime("%a %d %b") if pdate else "the next free slot"

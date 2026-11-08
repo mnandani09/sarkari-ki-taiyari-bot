@@ -16,8 +16,14 @@ def now(): return datetime.now(IST)
 def sb_headers(ct="application/octet-stream"):
     k = env("SUPABASE_KEY"); return {"apikey": k, "Authorization": f"Bearer {k}", "x-upsert": "true", "Content-Type": ct}
 def sb_upload(path, data, ct):
-    r = requests.post(f"{env('SUPABASE_URL').rstrip('/')}/storage/v1/object/reels/{path}", headers=sb_headers(ct), data=data, timeout=300)
-    if not r.ok: raise RuntimeError(f"Supabase upload {path}: HTTP {r.status_code} {r.text[:150]}")
+    for attempt in range(5):                     # Supabase/Cloudflare sometimes answers 5xx for a moment: wait and retry
+        try: r = requests.post(f"{env('SUPABASE_URL').rstrip('/')}/storage/v1/object/reels/{path}", headers=sb_headers(ct), data=data, timeout=300)
+        except requests.RequestException as e: r = None; err = str(e)[:150]
+        if r is not None and r.ok: break
+        if r is not None: err = f"HTTP {r.status_code} {r.text[:80]}"
+        if r is not None and r.status_code < 500: break
+        time.sleep(15 * (attempt + 1))
+    if r is None or not r.ok: raise RuntimeError(f"Supabase upload {path}: {err}")
     return sb_public(path)
 def sb_public(path): return f"{env('SUPABASE_URL').rstrip('/')}/storage/v1/object/public/reels/{path}"
 def sb_delete(paths):
