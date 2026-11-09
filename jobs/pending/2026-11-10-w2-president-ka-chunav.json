@@ -1,0 +1,168 @@
+{
+ "id": "2026-11-10-w2",
+ "topic": "President ka chunav: Electoral College",
+ "subject": "Polity",
+ "caption": "President of India ko kaun chunta hai? 🤔 Jawaab hai Electoral College, par sabko vote ka right nahi!\n\n📜 Article 54: President election ke liye Electoral College\n🏛️ Lok Sabha + Rajya Sabha ke elected members vote karte hain\n🧑‍💼 States (+ Delhi, Puducherry) ki Assemblies ke elected MLAs bhi\n🚫 Rajya Sabha ke nominated members vote nahi karte\n🧠 Trick: sirf Elected karte vote, Nominated nahi\n\nComment karo: Rajya Sabha ke nominated members vote karte hain ya nahi? A) Haan B) Nahi\nSave karo revision ke liye 📌 aur Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #RRB #RailwayExam #Polity #IndianPolity #PresidentOfIndia #ElectoralCollege #GK #GKinHindi #SarkariNaukri #CompetitiveExams",
+ "first_comment": "Answer: B) Vote nahi karte. Rajya Sabha aur Lok Sabha ke nominated members Electoral College mein vote nahi karte, sirf elected members karte hain.",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Ye sawaal exams mein ghoom-ghoom kar aata hai — President ko kaun chunta hai?",
+   "dev": "ये सवाल एग्ज़ाम्स में घूम-घूम कर आता है, प्रेजिडेंट को कौन चुनता है?",
+   "banner": [
+    "⚠️ Exam mein baar-baar!",
+    "President ko kaun chunta hai?"
+   ],
+   "sticker": "⚠️"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second, socho!",
+   "dev": "तीन सेकंड, सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab hai, Electoral College!",
+   "dev": "जवाब है, इलेक्टोरल कॉलेज!",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "Electoral College",
+     "label": "President Election"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "Article 54 mein likha hai, Electoral College chunta hai President ko.",
+   "dev": "आर्टिकल चौवन में लिखा है, इलेक्टोरल कॉलेज चुनता है प्रेजिडेंट को।",
+   "cards": [
+    {
+     "type": "chips",
+     "chips": [
+      "📜 Article 54"
+     ],
+     "small": "Bharat ka Samvidhan"
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "Isme Lok Sabha aur Rajya Sabha ke elected members hote hain.",
+   "dev": "इसमें लोक सभा और राज्य सभा के इलेक्टेड मेंबर्स होते हैं।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "🏛️ Lok Sabha + Rajya Sabha",
+     "lines": [
+      "Elected *MPs*"
+     ],
+     "emoji": "✅"
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "Saath mein states ki Legislative Assemblies ke elected MLAs bhi.",
+   "dev": "साथ में स्टेट्स की लेजिस्लेटिव असेंबलीज़ के इलेक्टेड एमएलए भी।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🧑‍💼",
+     "lines": [
+      "Elected *MLAs*"
+     ],
+     "small": "States + Delhi + Puducherry"
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Story abhi",
+      "*baaki hai*"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "Rajya Sabha ke nominated members vote nahi karte.",
+   "dev": "राज्य सभा के नॉमिनेटेड मेंबर्स वोट नहीं करते।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🚫 VOTE NAHI",
+     "tag_color": "red",
+     "lines": [
+      "Nominated members",
+      "*vote nahi karte*"
+     ],
+     "small": "12 nominated RS members"
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Trick yaad rakhna — sirf elected members vote karte, nominated nahi.",
+   "dev": "ट्रिक याद रखना, सिर्फ इलेक्टेड मेंबर्स वोट करते, नॉमिनेटेड नहीं।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "*Elected* = vote",
+      "_Nominated_ = nahi"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "close",
+   "roman": "Ab batao — Rajya Sabha ke nominated members vote karte hain ya nahi?",
+   "dev": "अब बताओ, राज्य सभा के नॉमिनेटेड मेंबर्स वोट करते हैं या नहीं?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) Vote karte hain   B) Vote nahi karte"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ],
+ "bank_topic": "President ka chunav",
+ "written_by": "claude",
+ "fact_check": "passed (Gemini)",
+ "post_date": "2026-11-11",
+ "order": 1
+}
