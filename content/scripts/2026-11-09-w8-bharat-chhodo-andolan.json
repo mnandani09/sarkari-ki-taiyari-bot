@@ -1,0 +1,173 @@
+{
+ "id": "2026-11-09-w8",
+ "topic": "Bharat Chhodo Andolan: 8 August 1942, Karo ya Maro",
+ "subject": "History",
+ "caption": "Quit India Movement kab aur kahan shuru hua tha? 🤔 Jawaab hai 8 August 1942, Bombay mein!\n\n📍 8 August 1942: AICC session, Gowalia Tank Maidan, Bombay mein hua\n🗣️ Gandhiji ne diya nara \"Karo ya Maro\" (Do or Die)\n🚔 9 August 1942: Gandhiji aur baaki netaon ko arrest kar liya gaya\n✊ Iske baad andolan mass level par pure Bharat mein phail gaya\n\nComment karo: Quit India Movement kahan shuru hua? A) Gowalia Tank, Bombay B) Red Fort, Delhi\nSave karo revision ke liye 📌 aur Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #RRB #RailwayExam #History #IndianHistory #QuitIndiaMovement #FreedomStruggle #GK #GKinHindi #SarkariNaukri #CompetitiveExams",
+ "first_comment": "Answer: A) Gowalia Tank, Bombay. 8 August 1942 ko AICC session mein Gandhiji ne 'Karo ya Maro' ka nara diya.",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Quit India Movement kab aur kahan shuru hua, ye exams mein baar-baar aata hai.",
+   "dev": "क्विट इंडिया मूवमेंट कब और कहां शुरू हुआ, ये एग्ज़ाम्स में बार-बार आता है।",
+   "banner": [
+    "⚠️ Exam mein baar-baar!",
+    "Quit India kab, kahan shuru?"
+   ],
+   "sticker": "⚠️"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second, socho!",
+   "dev": "तीन सेकंड, सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab hai 8 August 1942, Bombay mein!",
+   "dev": "जवाब है, आठ अगस्त उन्नीस सौ बयालीस, बॉम्बे में।",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "8 August 1942",
+     "label": "Quit India Movement"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "Bombay ke Gowalia Tank Maidan mein AICC session hua tha.",
+   "dev": "बॉम्बे के गोवालिया टैंक मैदान में, ए आई सी सी सेशन हुआ था।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "📍 8 August 1942",
+     "lines": [
+      "Gowalia Tank Maidan",
+      "Bombay"
+     ],
+     "emoji": "🏛️"
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "Gandhiji ne diya nara — Karo ya Maro!",
+   "dev": "गांधीजी ने दिया नारा, करो या मरो।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🗣️ NARA",
+     "lines": [
+      "*Karo ya Maro*",
+      "(Do or Die)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Story *abhi*",
+      "baaki hai"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "Agle din, 9 August ko, Gandhiji arrest ho gaye.",
+   "dev": "अगले दिन, नौ अगस्त को, गांधीजी अरेस्ट हो गए।",
+   "cards": [
+    {
+     "type": "timeline",
+     "nodes": [
+      {
+       "year": "8 Aug",
+       "label": "*Karo ya Maro* nara"
+      },
+      {
+       "year": "9 Aug",
+       "label": "*Gandhiji* arrest",
+       "on": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "Phir bhi andolan pure Bharat mein phail gaya.",
+   "dev": "फिर भी आंदोलन, पूरे भारत में फैल गया।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "🇮🇳 Pura Desh",
+     "lines": [
+      "Quit India",
+      "Mass Movement"
+     ],
+     "emoji": "✊"
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Trick yaad rakho: 8 pe nara, 9 pe arrest.",
+   "dev": "ट्रिक याद रखो, आठ पे नारा, नौ पे अरेस्ट।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "8 Aug → *Nara*",
+      "9 Aug → _Arrest_"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "close",
+   "roman": "Quit India Movement kahan se shuru hua tha?",
+   "dev": "क्विट इंडिया मूवमेंट कहां से शुरू हुआ था?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) Gowalia Tank, Bombay   B) Red Fort, Delhi"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ],
+ "bank_topic": "Bharat Chhodo Andolan",
+ "written_by": "claude",
+ "fact_check": "passed (Gemini)"
+}
