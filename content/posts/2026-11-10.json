@@ -1,0 +1,98 @@
+{
+ "carousel": {
+  "topic": "Mountain Passes & Peaks",
+  "subject": "Indian Geography",
+  "tag": "📚 INDIAN GEOGRAPHY · SSC LEVEL",
+  "title_lines": [
+   "*Bharat* ke",
+   "_Parvat_ aur _Pass_",
+   "GK Quiz"
+  ],
+  "questions": [
+   {
+    "q": "Duniya ki sabse unchi parvat chotti kaunsi hai?",
+    "options": [
+     "K2",
+     "Makalu",
+     "Kangchenjunga",
+     "Mount Everest"
+    ],
+    "answer": 3,
+    "why": "Mount Everest (8,849 m) duniya ki sabse unchi chotti hai, Nepal-China border par."
+   },
+   {
+    "q": "Khyber Pass kin do deshon ke beech sthit hai?",
+    "options": [
+     "Pakistan-Afghanistan",
+     "India-Nepal",
+     "India-China",
+     "India-Bhutan"
+    ],
+    "answer": 0,
+    "why": "Khyber Pass Hindukush range mein Pakistan-Afghanistan border par hai."
+   },
+   {
+    "q": "Nathu La Pass kis rajya mein sthit hai?",
+    "options": [
+     "Sikkim",
+     "Himachal Pradesh",
+     "Uttarakhand",
+     "Jammu Kashmir"
+    ],
+    "answer": 0,
+    "why": "Nathu La Pass Sikkim mein hai, yeh India-China trade route hai."
+   },
+   {
+    "q": "Shivalik range ko kis naam se bhi jaana jata hai?",
+    "options": [
+     "Himadri",
+     "Bahari Himalaya",
+     "Trans Himalaya",
+     "Madhya Himalaya"
+    ],
+    "answer": 1,
+    "why": "Shivalik sabse bahar ki range hai, isliye 'Bahari Himalaya' kehte hain."
+   },
+   {
+    "q": "Bharat ki sabse purani parvat shrinkhala kaunsi hai?",
+    "options": [
+     "Aravalli",
+     "Vindhya",
+     "Himalaya",
+     "Satpura"
+    ],
+    "answer": 0,
+    "why": "Aravalli range duniya ki sabse purani parvat shrinkhalaon mein se ek hai."
+   }
+  ],
+  "caption": "Pahadon ke baare mein kitna jaante ho? 🏔️ 5 sawal, kitne sahi hue? Score comment karo 👇 Save karo 📌 Follow karo @sarkari.ki.taiyari #SSCGK #SSCCGL #SSCCHSL #SSCMTS #RailwayExam #RRBNTPC #GroupD #GKQuiz #IndianGeography #StaticGK #SarkariExam #GovtJobPrep"
+ },
+ "post": {
+  "topic": "Sound Travel in Mediums",
+  "subject": "General Science",
+  "q": "Dhwani (sound) sabse tez kis maadhyam mein chalti hai?",
+  "options": [
+   "Hawa (Gas)",
+   "Vacuum",
+   "Paani (Liquid)",
+   "Thos (Solid)"
+  ],
+  "answer": 3,
+  "why": "Thos mein particles paas-paas hote hain, isliye dhwani sabse tez chalti hai.",
+  "caption": "Dhwani (sound) sabse tez kis maadhyam mein chalti hai? Comment mein A, B, C ya D likho 👇 Jawaab raat 10 baje comment mein Follow karo @sarkari.ki.taiyari #SSCGK #ScienceGK #SSCCGL #SSCMTS #RailwayExam #RRBNTPC #GeneralScience #SarkariExam #GovtJobPrep #StaticGK",
+  "answer_comment": "✅ Sahi jawaab: D) Thos (Solid). Thos mein particles paas-paas hote hain, isliye dhwani sabse tez chalti hai. Kitne logon ne sahi bataya? 🙌"
+ },
+ "story": {
+  "topic": "WWW Full Form",
+  "subject": "Computer & General Awareness",
+  "q": "WWW ka full form kya hai?",
+  "options": [
+   "World Wide Wire",
+   "World Wide Web",
+   "Wide World Web",
+   "World Web Wide"
+  ],
+  "answer": 1,
+  "why": "WWW yaani World Wide Web, internet par jaankari access karne ka system hai."
+ }
+}
