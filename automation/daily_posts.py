@@ -5,7 +5,7 @@ Usage: python daily_posts.py [YYYY-MM-DD to force a date] [event_name]"""
 import json, os, sys
 from datetime import date, datetime, timedelta
 from common import *
-from write_scripts import ask_claude, gemini, extract_json
+from write_scripts import ask_claude, gemini, extract_json, check_json
 import post_cards
 
 SUBJECTS = ["Indian Polity", "Indian History", "Indian Geography", "General Science", "Indian Economy", "Static GK (firsts, largest, capitals, days)",
@@ -73,13 +73,13 @@ def fact_check(j):
     L = "ABCD"; lines = []
     for i, q in enumerate(all_qs(j)):
         lines.append(f"Q{i + 1}. {q['q']}\n   " + "  ".join(f"{L[k]}) {o}" for k, o in enumerate(q["options"])) + f"\n   MARKED ANSWER: {L[q['answer']]}\n   EXPLANATION: {q['why']}")
-    r = extract_json(gemini("""You are a strict fact-checker for Indian competitive exams (SSC, Railway). For each multiple-choice question below, check:
+    r, _ = check_json("""You are a strict fact-checker for Indian competitive exams (SSC, Railway). For each multiple-choice question below, check:
 the MARKED ANSWER is correct, it is the ONLY correct option, the question is not ambiguous or outdated, and the EXPLANATION is true.
 Use standard sources (NCERT, Lucent GK, official government facts).
 
 """ + "\n".join(lines) + """
 
-Reply as JSON: {"ok": true or false, "issues": ["Qn: what is wrong and the correct fact"]}. "ok" must be false if anything is wrong or doubtful."""))
+Reply as JSON: {"ok": true or false, "issues": ["Qn: what is wrong and the correct fact"]}. "ok" must be false if anything is wrong or doubtful.""")
     return bool(r.get("ok")), r.get("issues", [])
 
 def write(subjects, avoid, seed=0):

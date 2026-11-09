@@ -59,7 +59,7 @@ def ask_claude(prompt):
     if j.get("is_error"): raise RuntimeError(f"claude error: {str(j.get('result'))[:200]}")
     return j.get("result", "")
 
-_gem_model = None
+_gem_model = None; last_checker = "Gemini"
 def gemini(prompt, as_json=True):
     global _gem_model
     key = os.environ["GEMINI_API_KEY"]
@@ -69,16 +69,27 @@ def gemini(prompt, as_json=True):
               and not any(x in m["name"] for x in ("lite", "image", "tts", "audio", "live", "exp", "preview", "thinking"))]
         def ver(n):
             v = re.findall(r"(\d+(?:\.\d+)?)", n); return float(v[0]) if v else 0
-        _gem_model = sorted(ok, key=ver)[-1] if ok else "models/gemini-2.5-flash"
-        print("gemini model:", _gem_model)
+        _gem_model = sorted(ok, key=ver, reverse=True)[:3] or ["models/gemini-2.5-flash"]   # newest first, 2 older as backups
+        print("gemini models:", _gem_model)
     body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"temperature": 0.2}}
     if as_json: body["generationConfig"]["responseMimeType"] = "application/json"
-    for attempt in range(3):
-        r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/{_gem_model}:generateContent", params={"key": key}, json=body, timeout=180)
-        if r.ok:
-            return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-        print("gemini retry", r.status_code, r.text[:150]); time.sleep(10 * (attempt + 1))
-    raise RuntimeError("gemini failed")
+    last = ""
+    for attempt in range(6):                  # 503 = Google overloaded, 429 = rate limit: wait longer and try another model
+        model = _gem_model[attempt % len(_gem_model)]
+        try:
+            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/{model}:generateContent", params={"key": key}, json=body, timeout=180)
+            if r.ok: return r.json()["candidates"][0]["content"]["parts"][0]["text"]
+            last = f"HTTP {r.status_code}"
+        except requests.RequestException as e: last = type(e).__name__
+        print("gemini retry", model.split("/")[-1], last); time.sleep(15 * (attempt + 1))
+    raise RuntimeError(f"gemini unavailable ({last})")
+
+def check_json(prompt):
+    """Fact-check with Gemini; if Google is down, a fresh Claude call checks instead (still a separate pass from the writer)."""
+    try: return extract_json(gemini(prompt)), "Gemini"
+    except Exception as e:
+        print("fact-check falling back to Claude:", str(e)[:120])
+        return extract_json(ask_claude(prompt + "\n\nReply with the JSON only. Do not use any tools.")), "Claude (Gemini unavailable)"
 
 def write(prompt):
     try: return extract_json(ask_claude(prompt)), "claude"
@@ -128,7 +139,7 @@ def validate(j, rid):
 
 def fact_check(j):
     text = "\n".join(p["roman"] for p in j["phrases"]) + "\n\nCAPTION:\n" + j["caption"] + "\n\nANSWER COMMENT:\n" + j["first_comment"]
-    reply = gemini(f"""You are a strict fact-checker for Indian competitive exams (SSC, Railway). Check EVERY factual claim (dates, numbers,
+    r, by = check_json(f"""You are a strict fact-checker for Indian competitive exams (SSC, Railway). Check EVERY factual claim (dates, numbers,
 names, articles, amendments, places) in this Reel script against standard sources (NCERT, Lucent GK, official government facts).
 Also check that the quiz answer in ANSWER COMMENT is correct.
 Script:
@@ -136,7 +147,7 @@ Script:
 
 Reply as JSON: {{"ok": true or false, "issues": ["each wrong or doubtful claim, with the correct fact"]}}.
 "ok" must be false if anything is wrong, doubtful, or outdated.""")
-    r = extract_json(reply)
+    global last_checker; last_checker = by
     return bool(r.get("ok")), r.get("issues", [])
 
 def main():
@@ -166,7 +177,7 @@ def main():
                 ok, issues = (False, []) if errs else fact_check(j)
             if errs or not ok:
                 print(f"SKIP {topic}: format {errs} facts {issues}"); continue
-            j["bank_topic"], j["written_by"], j["fact_check"] = topic, by, "passed (Gemini)"
+            j["bank_topic"], j["written_by"], j["fact_check"] = topic, by, f"passed ({last_checker})"
             slug = re.sub(r"[^a-z0-9]+", "-", topic.lower()).strip("-")[:40]
             json.dump(j, open(f"content/scripts/{rid}-{slug}.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
             written.append(j["topic"]); print(f"WROTE {rid}: {j['topic']} (by {by}, fact-check passed)")
