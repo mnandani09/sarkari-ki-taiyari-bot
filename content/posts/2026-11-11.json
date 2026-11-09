@@ -1,0 +1,98 @@
+{
+ "carousel": {
+  "topic": "Human Body ke Organs",
+  "subject": "General Science",
+  "tag": "📚 GENERAL SCIENCE · SSC LEVEL",
+  "title_lines": [
+   "*Human Body*",
+   "ke _Organs_",
+   "5 Sawal Quiz"
+  ],
+  "questions": [
+   {
+    "q": "Sharir ki sabse badi gland kaunsi hai?",
+    "options": [
+     "Pancreas",
+     "Thyroid",
+     "Liver",
+     "Kidney"
+    ],
+    "answer": 2,
+    "why": "Liver sharir ki sabse badi gland hoti hai, pachan mein madad karti hai."
+   },
+   {
+    "q": "Khoon ko shuddh karne wala organ kaunsa hai?",
+    "options": [
+     "Heart",
+     "Kidney",
+     "Lungs",
+     "Liver"
+    ],
+    "answer": 1,
+    "why": "Kidney khoon se waste padarth nikal kar use shuddh karta hai."
+   },
+   {
+    "q": "Sharir ka sabse bada organ kaunsa hai?",
+    "options": [
+     "Liver",
+     "Lungs",
+     "Skin",
+     "Brain"
+    ],
+    "answer": 2,
+    "why": "Skin (twacha) sharir ka sabse bada aur bahari organ hoti hai."
+   },
+   {
+    "q": "Pachan tantra ka sabse lamba hissa kaunsa hai?",
+    "options": [
+     "Large intestine",
+     "Oesophagus",
+     "Stomach",
+     "Small intestine"
+    ],
+    "answer": 3,
+    "why": "Small intestine pachan tantra ka sabse lamba hissa hota hai."
+   },
+   {
+    "q": "Oxygen lekar CO2 bahar nikalne wala organ kaunsa hai?",
+    "options": [
+     "Lungs",
+     "Kidney",
+     "Liver",
+     "Heart"
+    ],
+    "answer": 0,
+    "why": "Lungs saans ke dauran oxygen lete hain aur CO2 bahar nikalte hain."
+   }
+  ],
+  "caption": "Body ke organs kitna jaante ho? 🧠\n5 sawal, kitne sahi hue? Score comment karo 👇\nSave karo 📌 Follow karo @sarkari.ki.taiyari\n#SSCCGL #SSCCHSL #SSCMTS #SSCGD #RailwayNTPC #RRBGroupD #GeneralScience #GK #SSCPreparation #SarkariExam #CompetitiveExams #StudyGram"
+ },
+ "post": {
+  "topic": "NITI Aayog ki Sthapna",
+  "subject": "Indian Economy",
+  "q": "NITI Aayog ki sthapna kab hui thi?",
+  "options": [
+   "2013",
+   "2016",
+   "2015",
+   "2014"
+  ],
+  "answer": 2,
+  "why": "NITI Aayog 1 January 2015 ko Planning Commission ki jagah bana tha.",
+  "caption": "NITI Aayog ki sthapna kab hui thi? 🤔\nComment mein A, B, C ya D likho 👇 Jawaab raat 10 baje comment mein\nFollow karo @sarkari.ki.taiyari\n#SSCCGL #SSCCHSL #IndianEconomy #GK #SSCPreparation #RailwayExam #SarkariExam #CompetitiveExams #StudyGram",
+  "answer_comment": "✅ Sahi jawaab: C) 2015. NITI Aayog 1 January 2015 ko Planning Commission ki jagah bana tha. Kitne logon ne sahi bataya? 🙌"
+ },
+ "story": {
+  "topic": "Sabse Bada Mahadeep",
+  "subject": "World Geography",
+  "q": "Duniya ka sabse bada mahadeep (continent) kaunsa hai?",
+  "options": [
+   "Africa",
+   "Asia",
+   "North America",
+   "Europe"
+  ],
+  "answer": 1,
+  "why": "Asia area aur population dono mein duniya ka sabse bada mahadeep hai."
+ }
+}
