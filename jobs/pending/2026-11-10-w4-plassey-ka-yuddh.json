@@ -1,0 +1,185 @@
+{
+ "id": "2026-11-10-w4",
+ "topic": "Plassey ka Yuddh: 1757, Clive vs Siraj-ud-Daulah",
+ "subject": "History",
+ "caption": "Plassey ka yuddh kab hua tha? 🤔 Jawaab hai 1757, lekin asli twist Mir Jafar ke dhokhe mein hai!\n\n⚔️ 23 June 1757: Robert Clive (East India Company) vs Siraj-ud-Daulah (Bengal ka Nawab)\n🗝️ Mir Jafar, Nawab ki sena ka senapati, gaddar ban gaya\n🏴 Isi dhokhe se Clive jeeta aur Bengal pe Company ka raj shuru hua\n📜 Ye Bengal mein British rule ki shuruaat mani jaati hai\n\nComment karo: kiska dhokha chala tha? A) Mir Jafar ya B) Siraj-ud-Daulah\nSave karo revision ke liye 📌 aur Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #RRB #RailwayExam #History #IndianHistory #PlasseyKiLadai #ModernHistory #GK #GKinHindi #SarkariNaukri #CompetitiveExams",
+ "first_comment": "Answer: A) Mir Jafar. Nawab Siraj-ud-Daulah ki sena ka senapati, jiske dhokhe se Robert Clive ne Plassey ki ladai jeet li (1757).",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Ye sawaal exams mein baar-baar aata hai — Plassey ka yuddh kab hua tha?",
+   "dev": "ये सवाल एग्ज़ाम्स में बार-बार आता है — प्लासी का युद्ध कब हुआ था?",
+   "banner": [
+    "⚠️ Exam mein baar-baar!",
+    "Plassey ka yuddh kab hua?"
+   ],
+   "sticker": "⚠️"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second, socho!",
+   "dev": "तीन सेकंड, सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab hai 1757!",
+   "dev": "जवाब है, सत्रह सौ सत्तावन।",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "1757",
+     "label": "Plassey ka Yuddh"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "23 June 1757 ko, Bengal mein ek badi ladai hui.",
+   "dev": "तेईस जून, सत्रह सौ सत्तावन को, बंगाल में एक बड़ी लड़ाई हुई।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "📅 23 June 1757",
+     "lines": [
+      "Plassey ka",
+      "*Yuddh*"
+     ],
+     "emoji": "⚔️"
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "Robert Clive, English East India Company ka senapati tha.",
+   "dev": "रॉबर्ट क्लाइव, इंग्लिश ईस्ट इंडिया कंपनी का सेनापति था।",
+   "cards": [
+    {
+     "type": "chips",
+     "chips": [
+      "⚔️ Robert Clive",
+      "🏴 East India Company"
+     ],
+     "small": "English sena ka senapati"
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "Siraj-ud-Daulah, Bengal ke aakhri azad Nawab the.",
+   "dev": "सिराज-उद-दौला, बंगाल के आखिरी आज़ाद नवाब थे।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "👑",
+     "lines": [
+      "Siraj-ud-Daulah",
+      "*Bengal ke Nawab*"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Twist",
+      "*abhi aaya!*"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "Mir Jafar, Nawab ki sena ka senapati, gaddar ban gaya.",
+   "dev": "मीर जाफ़र, नवाब की सेना का सेनापति, गद्दार बन गया।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🗝️",
+     "lines": [
+      "Mir Jafar",
+      "*gaddar* ban gaya"
+     ],
+     "small": "Nawab ki sena ka senapati"
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Isi dhokhe se Clive jeeta, Bengal pe Company ka raj shuru hua.",
+   "dev": "इसी धोखे से क्लाइव जीता, बंगाल पे कंपनी का राज शुरू हुआ।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "⚔️ NATIJA",
+     "lines": [
+      "Clive *jeeta*",
+      "Company ka *raj* shuru"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "body",
+   "roman": "Trick yaad rakho — Mir Jafar ka dhokha, 1757 ki haar.",
+   "dev": "ट्रिक याद रखो, मीर जाफ़र का धोखा, सत्रह सौ सत्तावन की हार।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "Mir Jafar = *Gaddar*",
+      "1757 = *Plassey*"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p11",
+   "seg": "close",
+   "roman": "Ab batao — Plassey mein kiska dhokha chala?",
+   "dev": "अब बताओ, प्लासी में किसका धोखा चला?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) Mir Jafar   B) Siraj-ud-Daulah"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ],
+ "bank_topic": "Plassey ka yuddh",
+ "written_by": "claude",
+ "fact_check": "passed (Gemini)",
+ "post_date": "2026-11-12",
+ "order": 0
+}

@@ -1,0 +1,174 @@
+{
+ "id": "2026-11-11-w1",
+ "topic": "Bharat ke rashtriya pratik",
+ "subject": "Static GK",
+ "caption": "Bharat ke rashtriya pratik kaun kaun hain? 🤔 Pakshi, pashu, ped aur nadi — sab alag kahani!\n\n🦚 Rashtriya Pakshi: Mor (1963 se)\n🐯 Rashtriya Pashu: Baagh, Bengal Tiger (1972 se)\n🌳 Rashtriya Ped: Bargad\n🌊 Rashtriya Nadi: Ganga (2008 se)\n\nComment karo: Rashtriya pashu kaun hai? A) Sher ya B) Baagh\nSave karo revision ke liye 📌 aur Follow karo @sarkari.ki.taiyari\n\n#SSC #SSCCGL #RRB #RailwayExam #StaticGK #GK #GKinHindi #IndianNationalSymbols #SarkariNaukri #CompetitiveExams #UPSC #GovtExams",
+ "first_comment": "Answer: B) Baagh — Bengal Tiger, Bharat ka rashtriya pashu (1972 se, pehle sher tha).",
+ "phrases": [
+  {
+   "id": "p01",
+   "seg": "hook",
+   "roman": "Bharat ke rashtriya pratik baar-baar poochhe jaate hain — pakshi, pashu, ped, nadi?",
+   "dev": "भारत के राष्ट्रीय प्रतीक बार-बार पूछे जाते हैं, पक्षी, पशु, पेड़, नदी?",
+   "banner": [
+    "⚠️ Exam mein baar-baar!",
+    "Rashtriya pratik kaun kaun hain?"
+   ],
+   "sticker": "⚠️"
+  },
+  {
+   "id": "p02",
+   "seg": "body",
+   "roman": "3 second, socho!",
+   "dev": "तीन सेकंड, सोचो।",
+   "cards": [
+    {
+     "type": "countdown"
+    }
+   ]
+  },
+  {
+   "id": "p03",
+   "seg": "body",
+   "roman": "Jawaab hai — rashtriya pakshi mor hai!",
+   "dev": "जवाब है, राष्ट्रीय पक्षी मोर है।",
+   "cards": [
+    {
+     "type": "answer",
+     "value": "Mor",
+     "label": "Rashtriya Pakshi"
+    }
+   ]
+  },
+  {
+   "id": "p04",
+   "seg": "body",
+   "roman": "Rashtriya pashu hai baagh, yaani Bengal tiger.",
+   "dev": "राष्ट्रीय पशु है बाघ, यानी बेंगल टाइगर।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "🐯 Rashtriya Pashu",
+     "lines": [
+      "*Baagh*"
+     ],
+     "emoji": "🐯"
+    }
+   ]
+  },
+  {
+   "id": "p05",
+   "seg": "body",
+   "roman": "Rashtriya ped hai bargad, jiski jaden door tak phailti hain.",
+   "dev": "राष्ट्रीय पेड़ है बरगद, जिसकी जड़ें दूर तक फैलती हैं।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "🌳 Rashtriya Ped",
+     "lines": [
+      "*Bargad*"
+     ],
+     "emoji": "🌳"
+    }
+   ]
+  },
+  {
+   "id": "p06",
+   "seg": "body",
+   "roman": "Aur rashtriya nadi hai Ganga.",
+   "dev": "और राष्ट्रीय नदी है गंगा।",
+   "cards": [
+    {
+     "type": "panel",
+     "small": "🌊 Rashtriya Nadi",
+     "lines": [
+      "*Ganga*"
+     ],
+     "emoji": "🌊"
+    }
+   ]
+  },
+  {
+   "id": "p07",
+   "seg": "body",
+   "roman": "Lekin story yahin khatam nahi hoti.",
+   "dev": "लेकिन स्टोरी यहीं खत्म नहीं होती।",
+   "cards": [
+    {
+     "type": "emoji",
+     "emoji": "🤯",
+     "lines": [
+      "Story *abhi*",
+      "baaki hai!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p08",
+   "seg": "body",
+   "roman": "Ganga ko 2008 mein rashtriya nadi ka darja mila.",
+   "dev": "गंगा को दो हज़ार आठ में, राष्ट्रीय नदी का दर्जा मिला।",
+   "cards": [
+    {
+     "type": "timeline",
+     "nodes": [
+      {
+       "year": "1972",
+       "label": "Baagh *rashtriya pashu*"
+      },
+      {
+       "year": "2008",
+       "label": "Ganga *rashtriya nadi*",
+       "on": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p09",
+   "seg": "body",
+   "roman": "Yaad rakho — Pakshi Mor, Pashu Baagh, Ped Bargad, Nadi Ganga.",
+   "dev": "याद रखो, पक्षी मोर, पशु बाघ, पेड़ बरगद, नदी गंगा।",
+   "cards": [
+    {
+     "type": "headline",
+     "tag": "🧠 YAAD KARNE KI TRICK",
+     "lines": [
+      "*Mor* - *Baagh*",
+      "*Bargad* - *Ganga*"
+     ],
+     "small": "Pakshi-Pashu-Ped-Nadi"
+    }
+   ]
+  },
+  {
+   "id": "p10",
+   "seg": "close",
+   "roman": "Ab batao — Bharat ka rashtriya pashu kaun hai?",
+   "dev": "अब बताओ, भारत का राष्ट्रीय पशु कौन है?",
+   "banner": [
+    "💬 Comment karo: A ya B?",
+    "A) Sher   B) Baagh"
+   ],
+   "sticker": "💬"
+  },
+  {
+   "id": "pEND",
+   "seg": "end",
+   "roman": "Follow karo Sarkari Ki Taiyari!",
+   "dev": "फॉलो करो, सरकारी की तैयारी!",
+   "banner": [
+    "🔔 Follow karo",
+    "@sarkari.ki.taiyari"
+   ],
+   "sticker": "🔔"
+  }
+ ],
+ "bank_topic": "Bharat ke rashtriya pratik",
+ "written_by": "claude",
+ "fact_check": "passed (Gemini)",
+ "post_date": "2026-11-12",
+ "order": 1
+}
