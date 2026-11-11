@@ -1,0 +1,98 @@
+{
+ "carousel": {
+  "topic": "Sports GK",
+  "subject": "Sports & Games GK",
+  "tag": "📚 SPORTS GK · SSC LEVEL",
+  "title_lines": [
+   "*Sports GK*",
+   "5 Sawal Quiz",
+   "_Try karo!_"
+  ],
+  "questions": [
+   {
+    "q": "Cricket team mein kitne khiladi hote hain?",
+    "options": [
+     "11",
+     "9",
+     "13",
+     "10"
+    ],
+    "answer": 0,
+    "why": "Cricket team mein total 11 khiladi hote hain, ek time par field par."
+   },
+   {
+    "q": "Olympic Games kitne saal baad hote hain?",
+    "options": [
+     "3 saal",
+     "4 saal",
+     "2 saal",
+     "5 saal"
+    ],
+    "answer": 1,
+    "why": "Olympic Games har 4 saal baad yaani once every four years organize hote hain."
+   },
+   {
+    "q": "'Hockey ka Jadugar' kise kaha jata hai?",
+    "options": [
+     "Sachin Tendulkar",
+     "Milkha Singh",
+     "Dhyan Chand",
+     "PT Usha"
+    ],
+    "answer": 2,
+    "why": "Major Dhyan Chand ko unki hockey skills ke kaaran 'Hockey ka Jadugar' kaha jata hai."
+   },
+   {
+    "q": "Chess board mein kitne squares (ghar) hote hain?",
+    "options": [
+     "36",
+     "49",
+     "81",
+     "64"
+    ],
+    "answer": 3,
+    "why": "Chess board 8x8 ka grid hota hai, yaani total 64 squares (ghar) hote hain."
+   },
+   {
+    "q": "Wimbledon tournament kis khel se sambandhit hai?",
+    "options": [
+     "Squash",
+     "Badminton",
+     "Tennis",
+     "Table Tennis"
+    ],
+    "answer": 2,
+    "why": "Wimbledon duniya ka sabse purana aur prestigious Tennis tournament hai, England mein hota hai."
+   }
+  ],
+  "caption": "Sports ka GK kitna strong hai tumhara? 🏆\n5 sawal, kitne sahi hue? Score comment karo 👇\nSave karo 📌 Follow karo @sarkari.ki.taiyari\n#SSCCGL #SSCCHSL #SSCMTS #SSCGD #RailwayNTPC #RRBGroupD #SportsGK #GKQuiz #SarkariExam #CompetitiveExam #StudyGram #SarkariKiTaiyari"
+ },
+ "post": {
+  "topic": "Bharat ka sabse bada rajya",
+  "subject": "Static GK (firsts, largest, capitals, days)",
+  "q": "Area ke hisaab se Bharat ka sabse bada rajya kaunsa hai?",
+  "options": [
+   "Uttar Pradesh",
+   "Rajasthan",
+   "Maharashtra",
+   "Madhya Pradesh"
+  ],
+  "answer": 1,
+  "why": "Rajasthan area ke hisaab se Bharat ka sabse bada rajya hai, lagbhag 342,239 sq km.",
+  "caption": "Area ke hisaab se Bharat ka sabse bada rajya kaunsa hai? 🤔\nComment mein A, B, C ya D likho 👇 Jawaab raat 10 baje comment mein\nFollow karo @sarkari.ki.taiyari\n#SSCCGL #SSCCHSL #SSCMTS #RailwayNTPC #RRBGroupD #StaticGK #GKQuiz #SarkariExam #CompetitiveExam #StudyGram",
+  "answer_comment": "✅ Sahi jawaab: B) Rajasthan. Rajasthan area ke hisaab se Bharat ka sabse bada rajya hai, lagbhag 342,239 sq km. Kitne logon ne sahi bataya? 🙌"
+ },
+ "story": {
+  "topic": "Bharatanatyam dance",
+  "subject": "Art & Culture of India",
+  "q": "Bharatanatyam dance style kis rajya se judi hui hai?",
+  "options": [
+   "Odisha",
+   "Assam",
+   "Tamil Nadu",
+   "Kerala"
+  ],
+  "answer": 2,
+  "why": "Bharatanatyam ek classical dance form hai jiska origin Tamil Nadu se mana jata hai."
+ }
+}
